@@ -1,0 +1,6 @@
+{
+  "name": "Radio Lofi Archive",
+  "description": "A customized music streaming platform that automatically indexes and plays a private catalog spanning from 2026-2032 directly from Google Drive.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
