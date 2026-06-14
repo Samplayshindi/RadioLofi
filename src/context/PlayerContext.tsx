@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useRef, useEffect, ReactNode } from 'react';
 import { Track, Project } from '../types';
-import { getAccessToken } from '../lib/firebase';
 
 interface PlayerContextType {
   currentTrack: Track | null;
@@ -43,6 +42,9 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
 
     const audio = audioRef.current;
     
+    // Allow playing without CORS issues for direct Drive links
+    audio.crossOrigin = 'anonymous';
+    
     const handleTimeUpdate = () => setProgress(audio.currentTime);
     const handleLoadedMetadata = () => setDuration(audio.duration);
     const handleEnded = () => nextTrack();
@@ -61,13 +63,7 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
 
   const playTrack = async (track: Track, project: Project, newQueue?: Track[]) => {
     try {
-      const token = await getAccessToken();
-      if (!token) throw new Error('No admin token');
-
-      // To play directly without building a blob (which takes RAM), 
-      // we can append access_token to the URL.
-      // E.g., https://www.googleapis.com/drive/v3/files/ID?alt=media&access_token=...
-      const src = `https://www.googleapis.com/drive/v3/files/${track.driveFileId}?alt=media&access_token=${token}`;
+      const src = `https://drive.google.com/uc?export=download&id=${track.driveFileId}`;
       
       setCurrentTrack(track);
       setCurrentProject(project);
