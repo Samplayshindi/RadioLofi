@@ -17,7 +17,6 @@ export function SearchView() {
   const filteredProjects = projects.filter(
     p => 
       p.title.toLowerCase().includes(q) || 
-      p.year.toString().includes(q) ||
       p.type.toLowerCase().includes(q)
   );
 
@@ -41,7 +40,7 @@ export function SearchView() {
         <input
           type="text"
           className="block w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-full text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-transparent transition-all shadow-lg text-sm font-medium"
-          placeholder="Search for songs, albums, or years..."
+          placeholder="Search for songs, EPs, or singles..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />

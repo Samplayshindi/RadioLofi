@@ -41,8 +41,6 @@ export function AlbumView() {
           <div className="flex items-center gap-4 text-sm text-white/80 font-medium">
             <span className="text-white hover:underline cursor-pointer">Radio Lofi</span>
             <span>•</span>
-            <span>{project.year}</span>
-            <span>•</span>
             <span>{project.tracks.length} track{project.tracks.length !== 1 && 's'}</span>
           </div>
         </div>

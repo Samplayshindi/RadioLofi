@@ -63,7 +63,10 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
 
   const playTrack = async (track: Track, project: Project, newQueue?: Track[]) => {
     try {
-      const src = `https://drive.google.com/uc?export=download&id=${track.driveFileId}`;
+      let src = track.driveFileId;
+      if (!src.startsWith('/') && !src.startsWith('http')) {
+        src = `https://drive.google.com/uc?export=download&id=${track.driveFileId}`;
+      }
       
       setCurrentTrack(track);
       setCurrentProject(project);

@@ -39,12 +39,7 @@ export function Sidebar() {
         <NavLink to="/singles" className={linkClasses}>
           <Music className="w-5 h-5" /> Singles
         </NavLink>
-        <NavLink to="/timeline" className={linkClasses}>
-          <ListMusic className="w-5 h-5" /> Timeline
-        </NavLink>
-        <NavLink to="/roadmap" className={linkClasses}>
-          <FastForward className="w-5 h-5" /> Roadmap
-        </NavLink>
+
       </div>
     </div>
   );

@@ -38,7 +38,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
       <h4 className="font-bold text-sm mb-1 text-white truncate">{project.title}</h4>
-      <p className="text-xs text-white/50 uppercase tracking-tighter truncate">{project.year} • {project.type}</p>
+      <p className="text-xs text-white/50 uppercase tracking-tighter truncate">
+        {project.type}
+      </p>
     </div>
   );
 }

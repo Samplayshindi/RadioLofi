@@ -7,8 +7,6 @@ import { PlayerBar } from './components/PlayerBar';
 // Import pages
 import { Home } from './pages/Home';
 import { AlbumView } from './pages/AlbumView';
-import { TimelineView } from './pages/TimelineView';
-import { RoadmapView } from './pages/RoadmapView';
 import { LibraryView } from './pages/LibraryView';
 import { SearchView } from './pages/SearchView';
 
@@ -27,8 +25,8 @@ export default function App() {
                   <Route path="/albums" element={<LibraryView filterType="Album" title="Albums" />} />
                   <Route path="/eps" element={<LibraryView filterType="EP" title="EPs" />} />
                   <Route path="/singles" element={<LibraryView filterType="Single" title="Singles" />} />
-                  <Route path="/timeline" element={<TimelineView />} />
-                  <Route path="/roadmap" element={<RoadmapView />} />
+                  <Route path="/timeline" element={<Navigate to="/" replace />} />
+                  <Route path="/roadmap" element={<Navigate to="/" replace />} />
                   <Route path="/project/:id" element={<AlbumView />} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>

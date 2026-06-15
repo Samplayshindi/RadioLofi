@@ -27,8 +27,7 @@ export function Home() {
 
   const stats = {
     totalProjects: projects.length,
-    totalTracks: projects.reduce((acc, p) => acc + p.tracks.length, 0),
-    years: [...new Set(projects.map(p => p.year))].length
+    totalTracks: projects.reduce((acc, p) => acc + p.tracks.length, 0)
   };
 
   return (
@@ -50,11 +49,9 @@ export function Home() {
             </div>
             <h2 className="text-7xl font-black tracking-tighter mb-4 text-white">Radio Lofi</h2>
             <div className="flex gap-4 text-sm text-white/80 font-medium">
-              <span>{stats.totalProjects} Projects</span>
+              <span>{stats.totalProjects} Project{stats.totalProjects !== 1 ? 's' : ''}</span>
               <span>•</span>
-              <span>{stats.totalTracks} Tracks</span>
-              <span>•</span>
-              <span>Catalog 2026–2032</span>
+              <span>{stats.totalTracks} Track{stats.totalTracks !== 1 ? 's' : ''}</span>
             </div>
           </div>
         </div>

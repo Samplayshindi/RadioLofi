@@ -1,0 +1,71 @@
+{
+  "lastUpdated": "2026-06-15T07:35:48Z",
+  "projects": [
+    {
+      "id": "static_lights",
+      "title": "Static Lights",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/main/Static%20Lights/Static%20Lights%20v2.jpg",
+      "tracks": [
+        {
+          "id": "t_static_lights_1",
+          "title": "Static Lights",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/9d9ff0331d46fa5a4a1c58f6b649b48a7f1f8638/Static%20Lights/Static%20Lights.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "silk_static",
+      "title": "Silk & Static",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/main/Silk%20%26%20Static/silk%20%26%20static.jpg",
+      "tracks": [
+        {
+          "id": "t_silk_static_1",
+          "title": "Silk & Static",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/483dedb75192c053f1113caf20b34c8abfd70cc9/Silk%20%26%20Static/Silk%20%26%20Static.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "loading_fl_studio_again",
+      "title": "Loading FL Studio Again",
+      "type": "EP",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/main/loading%20fl%20studio%20again/Poster.jpg",
+      "tracks": [
+        {
+          "id": "t_clicking_around",
+          "title": "clicking around",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/cebecb7674a6e1e098004de4d36d0cd0b339337c/loading%20fl%20studio%20again/1.%20clicking%20around.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_waiting_for_plugin",
+          "title": "waiting for the plugin to load",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/cebecb7674a6e1e098004de4d36d0cd0b339337c/loading%20fl%20studio%20again/2.%20waiting%20for%20the%20plugin%20to%20load.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_think_sounds_good",
+          "title": "i think this sounds good",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/cebecb7674a6e1e098004de4d36d0cd0b339337c/loading%20fl%20studio%20again/3.%20i%20think%20this%20sounds%20good.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_scrolling_samples",
+          "title": "scrolling through samples",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/cebecb7674a6e1e098004de4d36d0cd0b339337c/loading%20fl%20studio%20again/4.%20scrolling%20through%20samples.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_exporting_crashed",
+          "title": "exporting... crashed!",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/cebecb7674a6e1e098004de4d36d0cd0b339337c/loading%20fl%20studio%20again/5.%20exporting...%20crashed!.mp3",
+          "trackNumber": 5
+        }
+      ]
+    }
+  ]
+}

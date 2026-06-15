@@ -11,7 +11,7 @@ export interface Track {
 export interface Project {
   id: string; // Drive folder ID
   title: string; // Folder name
-  year: number;
+  year?: number;
   type: ProjectType;
   tracks: Track[];
   coverArtId?: string; // Drive file ID for the cover image
