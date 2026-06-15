@@ -10,7 +10,7 @@ export function Home() {
     return (
       <div className="h-full flex flex-col items-center justify-center text-white/40">
         <LoaderIcon className="w-8 h-8 animate-spin mb-4" />
-        <p>Scanning Google Drive Catalog...</p>
+        <p>Loading Catalog...</p>
       </div>
     );
   }

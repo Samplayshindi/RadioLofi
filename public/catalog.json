@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-06-15T07:35:48Z",
+  "lastUpdated": "2026-06-15T08:04:14Z",
   "projects": [
     {
       "id": "static_lights",
       "title": "Static Lights",
       "type": "Single",
-      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/main/Static%20Lights/Static%20Lights%20v2.jpg",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/radio/main/Static%20Lights%20v2.jpg",
       "tracks": [
         {
           "id": "t_static_lights_1",
@@ -19,7 +19,7 @@
       "id": "silk_static",
       "title": "Silk & Static",
       "type": "Single",
-      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/main/Silk%20%26%20Static/silk%20%26%20static.jpg",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/radio/ff0de5e199fd3ade4bc0a2488a8823f59f6ddc52/silk%20%26%20static.jpg",
       "tracks": [
         {
           "id": "t_silk_static_1",
@@ -33,7 +33,7 @@
       "id": "loading_fl_studio_again",
       "title": "Loading FL Studio Again",
       "type": "EP",
-      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/main/loading%20fl%20studio%20again/Poster.jpg",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/radio/main/Poster.jpg",
       "tracks": [
         {
           "id": "t_clicking_around",
@@ -63,6 +63,58 @@
           "id": "t_exporting_crashed",
           "title": "exporting... crashed!",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/cebecb7674a6e1e098004de4d36d0cd0b339337c/loading%20fl%20studio%20again/5.%20exporting...%20crashed!.mp3",
+          "trackNumber": 5
+        }
+      ]
+    },
+    {
+      "id": "neon_city",
+      "title": "Neon City",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/radio/main/poster%20NEONM.jpg",
+      "tracks": [
+        {
+          "id": "t_neon_city_1",
+          "title": "Neon City",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/c6b040ac0fcf46a59dd25c9ab77bbb8a2b9007ff/Purple%20City.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "chasing_horizons",
+      "title": "Chasing Horizons",
+      "type": "EP",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/radio/main/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_caught_a_breeze",
+          "title": "Caught a Breeze",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/c6b040ac0fcf46a59dd25c9ab77bbb8a2b9007ff/1.%20caught%20a%20breeze.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_pink_skies",
+          "title": "Pink Skies",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/c6b040ac0fcf46a59dd25c9ab77bbb8a2b9007ff/2.%20pink%20skies.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_orange_gradient",
+          "title": "Orange Gradient",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/c6b040ac0fcf46a59dd25c9ab77bbb8a2b9007ff/3.%20Orange%20Gradient.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_afterglow",
+          "title": "Afterglow",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/c6b040ac0fcf46a59dd25c9ab77bbb8a2b9007ff/4.%20Afterglow.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_fade_to_dusk",
+          "title": "Fade to Dusk",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/c6b040ac0fcf46a59dd25c9ab77bbb8a2b9007ff/5.%20Fade%20to%20Dusk.mp3",
           "trackNumber": 5
         }
       ]
