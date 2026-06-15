@@ -9,12 +9,15 @@ export function Sidebar() {
     }`;
 
   return (
-    <div className="w-64 bg-black flex-shrink-0 flex flex-col p-6 border-r border-white/5">
+    <div className="hidden md:flex w-64 bg-black flex-shrink-0 flex flex-col p-6 border-r border-white/5">
       <div className="flex items-center gap-3 mb-8">
-        <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center">
-          <span className="font-black text-xs text-white">RL</span>
-        </div>
-        <h1 className="font-bold tracking-tight text-lg text-white">Radio Lofi <span className="text-purple-400">Archive</span></h1>
+        <img 
+          src="https://raw.githubusercontent.com/Samplayshindi/radio/main/cropped_circle_image.png" 
+          alt="Radio Waves" 
+          className="w-8 h-8 rounded-full object-cover shrink-0" 
+          referrerPolicy="no-referrer"
+        />
+        <h1 className="font-bold tracking-tight text-lg text-white">Radio Waves <span className="text-purple-400">Archive</span></h1>
       </div>
 
       <nav className="flex flex-col gap-2 mb-8">

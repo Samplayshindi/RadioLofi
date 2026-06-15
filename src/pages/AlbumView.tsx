@@ -38,8 +38,14 @@ export function AlbumView() {
         <div>
           <div className="text-[10px] uppercase tracking-[0.3em] font-bold text-white mb-2">{project.type}</div>
           <h1 className="text-5xl font-black text-white tracking-tighter mb-4">{project.title}</h1>
-          <div className="flex items-center gap-4 text-sm text-white/80 font-medium">
-            <span className="text-white hover:underline cursor-pointer">Radio Lofi</span>
+          <div className="flex items-center gap-2 text-sm text-white/80 font-medium">
+            <img 
+              src="https://raw.githubusercontent.com/Samplayshindi/radio/main/cropped_circle_image.png" 
+              alt="Radio Waves" 
+              className="w-5 h-5 rounded-full object-cover shrink-0" 
+              referrerPolicy="no-referrer"
+            />
+            <span className="text-white hover:underline cursor-pointer font-bold">Radio Waves</span>
             <span>•</span>
             <span>{project.tracks.length} track{project.tracks.length !== 1 && 's'}</span>
           </div>

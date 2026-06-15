@@ -1,6 +1,34 @@
 {
-  "lastUpdated": "2026-06-15T08:04:14Z",
+  "lastUpdated": "2026-06-15T08:22:31Z",
   "projects": [
+    {
+      "id": "between_two_frequencies_pt2",
+      "title": "Between Two Frequencies Pt.2",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/radio/main/BTW2POSTER.jpg",
+      "tracks": [
+        {
+          "id": "t_between_two_frequencies_pt2_1",
+          "title": "Between Two Frequencies Pt.2",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/78821acf5dc666c7d28e2953feb764c2774e6867/Between%20Two%20Frequencies%20PT.2.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "broken_promises",
+      "title": "Broken Promises",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/radio/main/broken%20promises/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_broken_promises_1",
+          "title": "Broken Promises",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/d97b433d7d2e8898fdd065f5e6412663065d3938/broken%20promises/broken%20promises.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
     {
       "id": "static_lights",
       "title": "Static Lights",

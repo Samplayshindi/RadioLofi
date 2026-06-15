@@ -35,10 +35,13 @@ export function Home() {
       {/* Artist Hero */}
       <section className="h-[280px] bg-gradient-to-b from-indigo-900/60 to-[#050505] flex items-end p-8 pb-6">
         <div className="flex gap-6 items-end">
-          <div className="w-48 h-48 shadow-2xl rounded-sm overflow-hidden bg-white/5">
-            <div className="w-full h-full bg-gradient-to-tr from-purple-800 to-blue-700 flex items-center justify-center">
-              <Disc3 className="w-24 h-24 text-white/20" />
-            </div>
+          <div className="w-48 h-48 shadow-2xl rounded-full overflow-hidden bg-white/5 border-2 border-white/10 shrink-0">
+            <img 
+              src="https://raw.githubusercontent.com/Samplayshindi/radio/main/cropped_circle_image.png" 
+              alt="Radio Waves" 
+              className="w-full h-full object-cover block" 
+              referrerPolicy="no-referrer"
+            />
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-2 mb-2">
@@ -47,8 +50,8 @@ export function Home() {
               </span>
               <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-white">Verified Artist</span>
             </div>
-            <h2 className="text-7xl font-black tracking-tighter mb-4 text-white">Radio Lofi</h2>
-            <div className="flex gap-4 text-sm text-white/80 font-medium">
+            <h2 className="text-7xl font-black tracking-tighter mb-4 text-white">Radio Waves</h2>
+            <div className="flex gap-4 text-sm text-white/80 font-medium font-semibold">
               <span>{stats.totalProjects} Project{stats.totalProjects !== 1 ? 's' : ''}</span>
               <span>•</span>
               <span>{stats.totalTracks} Track{stats.totalTracks !== 1 ? 's' : ''}</span>

@@ -1,9 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, NavLink } from 'react-router-dom';
 import { LibraryProvider } from './context/LibraryContext';
 import { PlayerProvider } from './context/PlayerContext';
 import { Sidebar } from './components/Sidebar';
 import { PlayerBar } from './components/PlayerBar';
+import { Home as HomeIcon, Search as SearchIcon, Disc3 as DiscIcon, Mic2 as MicIcon, Music as MusicIcon } from 'lucide-react';
 // Import pages
 import { Home } from './pages/Home';
 import { AlbumView } from './pages/AlbumView';
@@ -19,17 +20,56 @@ export default function App() {
             <div className="flex flex-1 overflow-hidden h-[calc(100vh-90px)]">
               <Sidebar />
               <main className="flex-1 relative flex flex-col overflow-y-auto">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/search" element={<SearchView />} />
-                  <Route path="/albums" element={<LibraryView filterType="Album" title="Albums" />} />
-                  <Route path="/eps" element={<LibraryView filterType="EP" title="EPs" />} />
-                  <Route path="/singles" element={<LibraryView filterType="Single" title="Singles" />} />
-                  <Route path="/timeline" element={<Navigate to="/" replace />} />
-                  <Route path="/roadmap" element={<Navigate to="/" replace />} />
-                  <Route path="/project/:id" element={<AlbumView />} />
-                  <Route path="*" element={<Navigate to="/" replace />} />
-                </Routes>
+                {/* Mobile Top Header (Mobile Artist Profile) */}
+                <div className="md:hidden flex items-center justify-between p-4 bg-black/80 backdrop-blur-md border-b border-white/5 sticky top-0 z-30 shrink-0">
+                  <div className="flex items-center gap-2">
+                    <img 
+                      src="https://raw.githubusercontent.com/Samplayshindi/radio/main/cropped_circle_image.png" 
+                      alt="Radio Waves" 
+                      className="w-7 h-7 rounded-full object-cover shrink-0 border border-white/10" 
+                      referrerPolicy="no-referrer"
+                    />
+                    <span className="font-bold text-sm text-white tracking-tight">Radio Waves <span className="text-purple-400 text-xs ml-1 font-normal">Archive</span></span>
+                  </div>
+                </div>
+
+                <div className="flex-1">
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/search" element={<SearchView />} />
+                    <Route path="/albums" element={<LibraryView filterType="Album" title="Albums" />} />
+                    <Route path="/eps" element={<LibraryView filterType="EP" title="EPs" />} />
+                    <Route path="/singles" element={<LibraryView filterType="Single" title="Singles" />} />
+                    <Route path="/timeline" element={<Navigate to="/" replace />} />
+                    <Route path="/roadmap" element={<Navigate to="/" replace />} />
+                    <Route path="/project/:id" element={<AlbumView />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                  </Routes>
+                </div>
+
+                {/* Mobile Bottom Navigation */}
+                <div className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-md border-t border-white/5 flex justify-around py-3 px-2 sticky bottom-0 z-30 shrink-0">
+                  <NavLink to="/" className={({ isActive }) => `flex flex-col items-center gap-1 text-[10px] uppercase font-bold tracking-wider transition-colors ${isActive ? 'text-purple-400' : 'text-white/60 hover:text-white'}`}>
+                    <HomeIcon className="w-5 h-5" />
+                    <span>Home</span>
+                  </NavLink>
+                  <NavLink to="/search" className={({ isActive }) => `flex flex-col items-center gap-1 text-[10px] uppercase font-bold tracking-wider transition-colors ${isActive ? 'text-purple-400' : 'text-white/60 hover:text-white'}`}>
+                    <SearchIcon className="w-5 h-5" />
+                    <span>Search</span>
+                  </NavLink>
+                  <NavLink to="/albums" className={({ isActive }) => `flex flex-col items-center gap-1 text-[10px] uppercase font-bold tracking-wider transition-colors ${isActive ? 'text-purple-400' : 'text-white/60 hover:text-white'}`}>
+                    <DiscIcon className="w-5 h-5" />
+                    <span>Albums</span>
+                  </NavLink>
+                  <NavLink to="/eps" className={({ isActive }) => `flex flex-col items-center gap-1 text-[10px] uppercase font-bold tracking-wider transition-colors ${isActive ? 'text-purple-400' : 'text-white/60 hover:text-white'}`}>
+                    <MicIcon className="w-5 h-5" />
+                    <span>EPs</span>
+                  </NavLink>
+                  <NavLink to="/singles" className={({ isActive }) => `flex flex-col items-center gap-1 text-[10px] uppercase font-bold tracking-wider transition-colors ${isActive ? 'text-purple-400' : 'text-white/60 hover:text-white'}`}>
+                    <MusicIcon className="w-5 h-5" />
+                    <span>Singles</span>
+                  </NavLink>
+                </div>
               </main>
             </div>
             <PlayerBar />
