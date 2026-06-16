@@ -29,16 +29,18 @@ export function Home() {
 
   const recentlyAdded = projects; // Display all indexed projects
 
-  const stats = {
-    totalProjects: projects.length,
-    totalTracks: projects.reduce((acc, p) => acc + p.tracks.length, 0),
-    totalAlbums: projects.filter(p => p.type === 'Album').length,
-    totalEPs: projects.filter(p => p.type === 'EP').length,
-    totalSingles: projects.filter(p => p.type === 'Single').length,
-  };
+  const stats = React.useMemo(() => {
+    return {
+      totalProjects: projects.length,
+      totalTracks: projects.reduce((acc, p) => acc + p.tracks.length, 0),
+      totalAlbums: projects.filter(p => p.type === 'Album').length,
+      totalEPs: projects.filter(p => p.type === 'EP').length,
+      totalSingles: projects.filter(p => p.type === 'Single').length,
+    };
+  }, [projects]);
 
-  const totalRuntimeInSeconds = projects.reduce((total, p) => total + getProjectRuntime(p), 0);
-  const formattedLibraryRuntime = (() => {
+  const formattedLibraryRuntime = React.useMemo(() => {
+    const totalRuntimeInSeconds = projects.reduce((total, p) => total + getProjectRuntime(p), 0);
     if (totalRuntimeInSeconds <= 0) return 'Calculating...';
     const h = Math.floor(totalRuntimeInSeconds / 3600);
     const m = Math.floor((totalRuntimeInSeconds % 3600) / 60);
@@ -49,7 +51,7 @@ export function Home() {
     if (m > 0) parts.push(`${m}m`);
     parts.push(`${s}s`);
     return parts.join(' ');
-  })();
+  }, [projects, getProjectRuntime]);
 
   return (
     <div className="relative pb-24 flex-1 flex flex-col overflow-x-hidden min-h-screen bg-[#050505]">
@@ -80,7 +82,7 @@ export function Home() {
               </span>
             </div>
             
-            <h2 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter mb-4 text-white relative">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 text-white relative">
               Radio Waves
             </h2>
 

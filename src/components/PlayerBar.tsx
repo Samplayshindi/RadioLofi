@@ -59,6 +59,13 @@ export function PlayerBar() {
 
   return (
     <footer className="h-20 md:h-[90px] bg-[#0c0c0c]/95 backdrop-blur-md border-t border-white/5 flex items-center px-4 md:px-6 justify-between z-30 relative select-none">
+      {/* Mobile-oriented Slim Progress Line Accent */}
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-white/5 md:hidden">
+        <div 
+          className="h-full bg-gradient-to-r from-cyan-400 via-[#ff007f] to-purple-500 transition-all duration-100 ease-out" 
+          style={{ width: `${duration ? (progress / duration) * 100 : 0}%` }}
+        />
+      </div>
       
       {/* Now Playing Info */}
       <div className="flex items-center gap-3 w-[45%] md:w-[30%] min-w-0">

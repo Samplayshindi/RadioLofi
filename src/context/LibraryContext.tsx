@@ -9,6 +9,7 @@ interface LibraryContextType {
   refresh: () => Promise<void>;
   durations: Record<string, number>;
   getProjectRuntime: (project: Project) => number;
+  fetchProjectDurations: (project: Project) => Promise<void>;
 }
 
 const LibraryContext = createContext<LibraryContextType | null>(null);
@@ -81,73 +82,76 @@ export const LibraryProvider = ({ children }: { children: ReactNode }) => {
     fetchCatalog();
   }, []);
 
-  // Background Duration Fetcher
+  // Background Duration Fetcher - ONLY load existing cached items on startup to prevent network flood
   useEffect(() => {
     if (projects.length === 0) return;
 
-    // Load available metrics from localStorage immediately
     const loaded: Record<string, number> = {};
-    const toFetch: { id: string; url: string }[] = [];
-
     projects.forEach(p => {
       p.tracks.forEach(t => {
         const cacheKey = `rw_dur_${t.id}`;
-        const saved = localStorage.getItem(cacheKey);
-        if (saved) {
-          const val = parseFloat(saved);
-          if (val > 0) {
-            loaded[t.id] = val;
-            return;
+        try {
+          const saved = localStorage.getItem(cacheKey);
+          if (saved) {
+            const val = parseFloat(saved);
+            if (val > 0) {
+              loaded[t.id] = val;
+            }
           }
+        } catch (e) {
+          console.warn('Storage read error:', e);
         }
-        toFetch.push({ id: t.id, url: normalizeAudioUrl(t.driveFileId) });
       });
     });
 
     setDurations(prev => ({ ...prev, ...loaded }));
+  }, [projects]);
+
+  // Lazy-load durations for a specific project on-demand
+  const fetchProjectDurations = React.useCallback(async (project: Project) => {
+    const toFetch: { id: string; url: string }[] = [];
+    
+    project.tracks.forEach(t => {
+      const cacheKey = `rw_dur_${t.id}`;
+      let isCached = false;
+      try {
+        const saved = localStorage.getItem(cacheKey);
+        if (saved && parseFloat(saved) > 0) {
+          isCached = true;
+        }
+      } catch {}
+
+      if (!isCached) {
+        toFetch.push({ id: t.id, url: normalizeAudioUrl(t.driveFileId) });
+      }
+    });
 
     if (toFetch.length === 0) return;
 
-    let cancelled = false;
+    // Fetch batch sequentially/concurrently with a tiny limit to keep interface incredibly fast
+    const results = await Promise.all(
+      toFetch.map(async (item) => {
+        const dur = await getAudioDuration(item.id, item.url);
+        return { id: item.id, duration: dur };
+      })
+    );
 
-    const fetchBatch = async () => {
-      const batchSize = 4;
-      for (let i = 0; i < toFetch.length; i += batchSize) {
-        if (cancelled) break;
-        const slice = toFetch.slice(i, i + batchSize);
-        const results = await Promise.all(
-          slice.map(async (item) => {
-            const dur = await getAudioDuration(item.id, item.url);
-            return { id: item.id, duration: dur };
-          })
-        );
-
-        if (cancelled) break;
-
-        const newDurations: Record<string, number> = {};
-        results.forEach(res => {
-          if (res.duration > 0) {
-            newDurations[res.id] = res.duration;
-            try {
-              localStorage.setItem(`rw_dur_${res.id}`, res.duration.toString());
-            } catch (err) {
-              console.warn('Storage quota margin exceeded:', err);
-            }
-          }
-        });
-
-        if (Object.keys(newDurations).length > 0) {
-          setDurations(prev => ({ ...prev, ...newDurations }));
+    const newDurations: Record<string, number> = {};
+    results.forEach(res => {
+      if (res.duration > 0) {
+        newDurations[res.id] = res.duration;
+        try {
+          localStorage.setItem(`rw_dur_${res.id}`, res.duration.toString());
+        } catch (err) {
+          console.warn('Storage quota margin exceeded:', err);
         }
       }
-    };
+    });
 
-    fetchBatch();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [projects]);
+    if (Object.keys(newDurations).length > 0) {
+      setDurations(prev => ({ ...prev, ...newDurations }));
+    }
+  }, []);
 
   const projectRuntimes = React.useMemo(() => {
     const runtimes: Record<string, number> = {};
@@ -164,7 +168,7 @@ export const LibraryProvider = ({ children }: { children: ReactNode }) => {
   }, [projectRuntimes]);
 
   return (
-    <LibraryContext.Provider value={{ projects, loading, error, refresh: fetchCatalog, durations, getProjectRuntime }}>
+    <LibraryContext.Provider value={{ projects, loading, error, refresh: fetchCatalog, durations, getProjectRuntime, fetchProjectDurations }}>
       {children}
     </LibraryContext.Provider>
   );

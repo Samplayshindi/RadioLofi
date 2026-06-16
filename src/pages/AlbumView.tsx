@@ -10,10 +10,16 @@ import { motion } from 'motion/react';
 export function AlbumView() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { projects, durations, getProjectRuntime } = useLibrary();
+  const { projects, durations, getProjectRuntime, fetchProjectDurations } = useLibrary();
   const { currentTrack, playTrack, currentProject, isPlaying, togglePlayPause } = usePlayer();
 
   const project = projects.find(p => p.id === id);
+
+  React.useEffect(() => {
+    if (project) {
+      fetchProjectDurations(project);
+    }
+  }, [project, fetchProjectDurations]);
 
   if (!project) {
     return (
@@ -83,7 +89,7 @@ export function AlbumView() {
           <div className="text-[10px] uppercase tracking-[0.25em] font-black text-cyan-400 mb-2 bg-cyan-400/10 px-2 py-0.5 rounded border border-cyan-400/20 shadow-sm inline-block">
             {project.type}
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter mb-4 max-w-full truncate">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4 max-w-full break-words">
             {project.title}
           </h1>
           

@@ -6,7 +6,6 @@ import { Play, Pause } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 import { useLibrary } from '../context/LibraryContext';
 import { formatProjectRuntime } from '../lib/time';
-import { motion } from 'motion/react';
 
 interface ProjectCardProps {
   project: Project;
@@ -36,13 +35,9 @@ export const ProjectCard = memo(function ProjectCard({ project }: ProjectCardPro
   };
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -4 }}
+    <div 
       onClick={() => navigate(`/project/${project.id}`)}
-      className={`relative p-4 rounded-2xl cursor-pointer group transition-all duration-300 select-none ${
+      className={`animate-fade-in-up relative p-4 rounded-2xl cursor-pointer group transition-all duration-300 hover:-translate-y-1 select-none will-change-transform ${
         isCurrent 
           ? 'bg-white/10 ring-1 ring-cyan-500/30 shadow-[0_0_20px_rgba(0,250,250,0.05)]' 
           : 'bg-white/[0.02] hover:bg-white/5 border border-white/5 hover:border-white/10'
@@ -95,6 +90,6 @@ export const ProjectCard = memo(function ProjectCard({ project }: ProjectCardPro
           </span>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 });
