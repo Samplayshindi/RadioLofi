@@ -9,7 +9,7 @@ interface LibraryContextType {
   refresh: () => Promise<void>;
   durations: Record<string, number>;
   getProjectRuntime: (project: Project) => number;
-  fetchProjectDurations: (project: Project) => Promise<void>;
+  fetchProjectDurations: (project: Project, limitTrackIds?: string[]) => Promise<void>;
 }
 
 const LibraryContext = createContext<LibraryContextType | null>(null);
@@ -108,10 +108,14 @@ export const LibraryProvider = ({ children }: { children: ReactNode }) => {
   }, [projects]);
 
   // Lazy-load durations for a specific project on-demand
-  const fetchProjectDurations = React.useCallback(async (project: Project) => {
+  const fetchProjectDurations = React.useCallback(async (project: Project, limitTrackIds?: string[]) => {
     const toFetch: { id: string; url: string }[] = [];
     
-    project.tracks.forEach(t => {
+    const targetTracks = limitTrackIds 
+      ? project.tracks.filter(t => limitTrackIds.includes(t.id))
+      : project.tracks;
+
+    targetTracks.forEach(t => {
       const cacheKey = `rw_dur_${t.id}`;
       let isCached = false;
       try {
@@ -128,13 +132,19 @@ export const LibraryProvider = ({ children }: { children: ReactNode }) => {
 
     if (toFetch.length === 0) return;
 
-    // Fetch batch sequentially/concurrently with a tiny limit to keep interface incredibly fast
-    const results = await Promise.all(
-      toFetch.map(async (item) => {
-        const dur = await getAudioDuration(item.id, item.url);
-        return { id: item.id, duration: dur };
-      })
-    );
+    // Fetch batch in small chunks of 3 concurrently to avoid browser resource choke
+    const results: { id: string; duration: number }[] = [];
+    const chunkSize = 3;
+    for (let i = 0; i < toFetch.length; i += chunkSize) {
+      const chunk = toFetch.slice(i, i + chunkSize);
+      const chunkResults = await Promise.all(
+        chunk.map(async (item) => {
+          const dur = await getAudioDuration(item.id, item.url);
+          return { id: item.id, duration: dur };
+        })
+      );
+      results.push(...chunkResults);
+    }
 
     const newDurations: Record<string, number> = {};
     results.forEach(res => {

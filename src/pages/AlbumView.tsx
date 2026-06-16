@@ -15,11 +15,44 @@ export function AlbumView() {
 
   const project = projects.find(p => p.id === id);
 
+  // Progressive rendering state for displaying long tracks lists cleanly list
+  const [visibleCount, setVisibleCount] = React.useState(15);
+
+  const visibleTracks = React.useMemo(() => {
+    if (!project) return [];
+    return project.tracks.slice(0, visibleCount);
+  }, [project, visibleCount]);
+
   React.useEffect(() => {
-    if (project) {
-      fetchProjectDurations(project);
+    setVisibleCount(15); // Reset limit on project mount or change
+  }, [id]);
+
+  React.useEffect(() => {
+    if (project && visibleTracks.length > 0) {
+      const visibleTrackIds = visibleTracks.map(t => t.id);
+      fetchProjectDurations(project, visibleTrackIds);
     }
-  }, [project, fetchProjectDurations]);
+  }, [project, visibleTracks, fetchProjectDurations]);
+
+  React.useEffect(() => {
+    if (!project || visibleCount >= project.tracks.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleCount((prev) => Math.min(prev + 10, project.tracks.length));
+        }
+      },
+      { rootMargin: '250px' } // Preload tracks 250px before entering viewport
+    );
+
+    const sentinel = document.getElementById('tracklist-sentinel');
+    if (sentinel) {
+      observer.observe(sentinel);
+    }
+
+    return () => observer.disconnect();
+  }, [project, visibleCount]);
 
   if (!project) {
     return (
@@ -138,7 +171,7 @@ export function AlbumView() {
         </div>
 
         <div className="space-y-1">
-          {project.tracks.map((track, i) => {
+          {visibleTracks.map((track, i) => {
             const isThisTrackActive = currentTrack?.id === track.id;
             const isThisTrackPlaying = isThisTrackActive && isPlaying;
             const itemDuration = durations[track.id] || 0;
@@ -196,6 +229,13 @@ export function AlbumView() {
             );
           })}
         </div>
+
+        {/* Sentinel to lazy-load more tracks dynamically on scroll */}
+        {project.tracks.length > visibleCount && (
+          <div id="tracklist-sentinel" className="h-10 flex items-center justify-center text-white/20 text-[10px] uppercase tracking-widest font-mono py-4">
+            Loading tracks...
+          </div>
+        )}
       </div>
     </motion.div>
   );
