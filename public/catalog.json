@@ -1,6 +1,82 @@
 {
-  "lastUpdated": "2026-06-16T06:26:24Z",
+  "lastUpdated": "2026-06-16T06:38:04Z",
   "projects": [
+    {
+      "id": "loading_terrain",
+      "title": "Loading Terrain",
+      "type": "EP",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/loading%20terrain/poster.png",
+      "tracks": [
+        {
+          "id": "t_new_world",
+          "title": "new world",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1023378c311a8c2252bf8dae736e8d976590b95f/loading%20terrain/1.%20new%20world.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_night_cycle",
+          "title": "night cycle",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1023378c311a8c2252bf8dae736e8d976590b95f/loading%20terrain/2.%20night%20cycle.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_safe_inside",
+          "title": "safe inside",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1023378c311a8c2252bf8dae736e8d976590b95f/loading%20terrain/3.%20safe%20inside.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_deep_underground",
+          "title": "deep underground",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1023378c311a8c2252bf8dae736e8d976590b95f/loading%20terrain/4.%20deep%20underground.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_night_sky",
+          "title": "night sky",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1023378c311a8c2252bf8dae736e8d976590b95f/loading%20terrain/5.%20night%20sky.mp3",
+          "trackNumber": 5
+        }
+      ]
+    },
+    {
+      "id": "interstellar",
+      "title": "Interstellar",
+      "type": "EP",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/Interstellar/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_crystalline_silence",
+          "title": "Crystalline Silence",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/afe895fcec1b143d0d4bd705eae9d19dd65073a5/Interstellar/Crystalline%20Silence.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_event_horizon",
+          "title": "Event Horizon",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/afe895fcec1b143d0d4bd705eae9d19dd65073a5/Interstellar/Event%20Horizon.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_interstellar_drift",
+          "title": "Interstellar Drift",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/afe895fcec1b143d0d4bd705eae9d19dd65073a5/Interstellar/Interstellar%20Drift.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_silent_orbit",
+          "title": "Silent Orbit",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/afe895fcec1b143d0d4bd705eae9d19dd65073a5/Interstellar/Silent%20Orbit.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_stellar_birth",
+          "title": "Stellar Birth",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/afe895fcec1b143d0d4bd705eae9d19dd65073a5/Interstellar/Stellar%20Birth.mp3",
+          "trackNumber": 5
+        }
+      ]
+    },
     {
       "id": "late_afternoon",
       "title": "Late Afternoon",
