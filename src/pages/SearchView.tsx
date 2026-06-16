@@ -46,6 +46,50 @@ export function SearchView() {
     }
   };
 
+  // Virtualization state for progressive infinite scroll matching search
+  const [visibleTracksCount, setVisibleTracksCount] = React.useState(15);
+  const [visibleProjectsCount, setVisibleProjectsCount] = React.useState(15);
+
+  React.useEffect(() => {
+    setVisibleTracksCount(15);
+    setVisibleProjectsCount(15);
+  }, [query]);
+
+  const visibleTracks = React.useMemo(() => {
+    return filteredTracks.slice(0, visibleTracksCount);
+  }, [filteredTracks, visibleTracksCount]);
+
+  const visibleProjects = React.useMemo(() => {
+    return filteredProjects.slice(0, visibleProjectsCount);
+  }, [filteredProjects, visibleProjectsCount]);
+
+  React.useEffect(() => {
+    const hasMoreTracks = visibleTracksCount < filteredTracks.length;
+    const hasMoreProjects = visibleProjectsCount < filteredProjects.length;
+    if (!hasMoreTracks && !hasMoreProjects) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          if (hasMoreTracks) {
+            setVisibleTracksCount((prev) => Math.min(prev + 15, filteredTracks.length));
+          }
+          if (hasMoreProjects) {
+            setVisibleProjectsCount((prev) => Math.min(prev + 15, filteredProjects.length));
+          }
+        }
+      },
+      { rootMargin: '300px' }
+    );
+
+    const sentinel = document.getElementById('search-sentinel');
+    if (sentinel) {
+      observer.observe(sentinel);
+    }
+
+    return () => observer.disconnect();
+  }, [filteredTracks, filteredProjects, visibleTracksCount, visibleProjectsCount]);
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -79,10 +123,10 @@ export function SearchView() {
             {filteredTracks.length > 0 ? (
               <section>
                 <h2 className="text-md uppercase font-bold tracking-widest text-[#00f2fe] mb-6 font-mono">
-                  Matching Audio Tracks
+                  Matching Audio Tracks ({filteredTracks.length})
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {filteredTracks.slice(0, 15).map(({ track, project }) => {
+                  {visibleTracks.map(({ track, project }) => {
                     const isThisCurrentTrack = currentTrack?.id === track.id;
                     const isThisTrackPlaying = isThisCurrentTrack && isPlaying;
 
@@ -129,14 +173,20 @@ export function SearchView() {
             {filteredProjects.length > 0 && (
               <section>
                 <h2 className="text-md uppercase font-bold tracking-widest text-[#ff007f] mb-6 font-mono">
-                  Matching Releases
+                  Matching Releases ({filteredProjects.length})
                 </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                  {filteredProjects.map(project => (
+                  {visibleProjects.map(project => (
                     <ProjectCard key={project.id} project={project} />
                   ))}
                 </div>
               </section>
+            )}
+
+            {(filteredTracks.length > visibleTracksCount || filteredProjects.length > visibleProjectsCount) && (
+              <div id="search-sentinel" className="h-10 w-full flex items-center justify-center text-white/20 text-[10px] uppercase font-mono tracking-widest">
+                Scanning more matches...
+              </div>
             )}
 
             {filteredProjects.length === 0 && filteredTracks.length === 0 && (

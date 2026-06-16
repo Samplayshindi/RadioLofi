@@ -1,6 +1,100 @@
 {
-  "lastUpdated": "2026-06-16T06:54:09Z",
+  "lastUpdated": "2026-06-16T14:11:00Z",
   "projects": [
+    {
+      "id": "summer_beats_ep",
+      "title": "Summer Beats EP",
+      "type": "EP",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/Summer Beats Ep/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_too_hot_to_go_outside",
+          "title": "too hot to go outside",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/504cb1c3133aeaab4216d81028e2ffd06690fd5d/Summer Beats Ep/1. too hot to go outside.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_finding_a_quote_for_tomorrow",
+          "title": "finding a quote for tomorrow",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/504cb1c3133aeaab4216d81028e2ffd06690fd5d/Summer Beats Ep/2. finding a quote for tomorrow.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_math_homework",
+          "title": "math homework",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/504cb1c3133aeaab4216d81028e2ffd06690fd5d/Summer Beats Ep/3. math homework.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_my_favourite_cousin",
+          "title": "my favourite cousin",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/504cb1c3133aeaab4216d81028e2ffd06690fd5d/Summer Beats Ep/4. my favourite cousin.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_the_floor_is_cold",
+          "title": "the floor is cold",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/504cb1c3133aeaab4216d81028e2ffd06690fd5d/Summer Beats Ep/5. the floor is cold.mp3",
+          "trackNumber": 5
+        }
+      ]
+    },
+    {
+      "id": "absolute_ambient",
+      "title": "Absolute Ambient",
+      "type": "Album",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/absolute ambient/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_aa_event_horizon",
+          "title": "event horizon",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/event horizon.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_aa_snowblind",
+          "title": "snowblind",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/Snowblind.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_aa_sleepless_skies",
+          "title": "sleepless skies",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/Sleepless Skies.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_aa_vhs_winter",
+          "title": "VHS winter",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/VHS Winter.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_aa_tectonic_shift",
+          "title": "tectonic shift",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/tectonic shift.mp3",
+          "trackNumber": 5
+        },
+        {
+          "id": "t_aa_hollow_lights",
+          "title": "hollow lights",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/Hollow Lights.mp3",
+          "trackNumber": 6
+        },
+        {
+          "id": "t_aa_after_the_credits",
+          "title": "after the credits",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/After the Credits.mp3",
+          "trackNumber": 7
+        },
+        {
+          "id": "t_aa_subzero_dreams",
+          "title": "subzero dreams",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/Subzero Dreams.mp3",
+          "trackNumber": 8
+        }
+      ]
+    },
     {
       "id": "liminal_spaces",
       "title": "Liminal Spaces",
