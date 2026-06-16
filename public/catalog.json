@@ -1,6 +1,134 @@
 {
-  "lastUpdated": "2026-06-15T20:07:47Z",
+  "lastUpdated": "2026-06-16T06:26:24Z",
   "projects": [
+    {
+      "id": "late_afternoon",
+      "title": "Late Afternoon",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/late%20afternoon/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_late_afternoon_1",
+          "title": "Late Afternoon",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1d50e03d80549e37db53c459baed48b865ac0f0a/late%20afternoon/Late%20Afternoon.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "lost_in_malibu",
+      "title": "Lost in Malibu",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/Lost%20in%20Malibu/Poster.jpg",
+      "tracks": [
+        {
+          "id": "t_lost_in_malibu_1",
+          "title": "Lost in Malibu",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1d50e03d80549e37db53c459baed48b865ac0f0a/Lost%20in%20Malibu/Lost%20in%20Malibu.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "midnight_shift",
+      "title": "Midnight Shift",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/midnight%20shift/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_midnight_shift_1",
+          "title": "Midnight Shift",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c86c6f4ac65883878c961206b72591060dacad87/midnight%20shift/Midnight%20Shift.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "sad_tunes_for_the_moment_pt2",
+      "title": "Sad Tunes For The Moment pt. 2",
+      "type": "Album",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/sad%20tunes%20for%20the%20moment%20pt.2/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_numb_to_it",
+          "title": "numb to it",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/1.%20numb%20to%20it.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_pretending_im_fine",
+          "title": "pretending i'm fine",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/2.%20pretending%20i'm%20fine.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_slipping_away",
+          "title": "slipping away",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/3.%20slipping%20away.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_i_dont_wanna_wake_up",
+          "title": "i don't wanna wake up",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/4.%20i%20don't%20wanna%20wake%20up.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_breaking_down",
+          "title": "breaking down",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/5.%20breaking%20down.mp3",
+          "trackNumber": 5
+        },
+        {
+          "id": "t_not_fine",
+          "title": "Not Fine",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/6.%20pretending%20i'm%20fine.mp3",
+          "trackNumber": 6
+        },
+        {
+          "id": "t_hope",
+          "title": "Hope",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/7.%20slipping%20away.mp3",
+          "trackNumber": 7
+        },
+        {
+          "id": "t_i_wish_i_forgot",
+          "title": "i wish i forgot",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/8.%20i%20wish%20i%20forgot.mp3",
+          "trackNumber": 8
+        },
+        {
+          "id": "t_just_a_ghost",
+          "title": "just a ghost",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/9.%20just%20a%20ghost.mp3",
+          "trackNumber": 9
+        },
+        {
+          "id": "t_make_it_stop",
+          "title": "make it stop",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/10.%20make%20it%20stop.mp3",
+          "trackNumber": 10
+        },
+        {
+          "id": "t_broken_strings",
+          "title": "broken strings",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/11.%20broken%20strings.mp3",
+          "trackNumber": 11
+        },
+        {
+          "id": "t_lost_dream",
+          "title": "lost dream",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/12.%20lost%20dream.mp3",
+          "trackNumber": 12
+        },
+        {
+          "id": "t_goodbye_forever_outro",
+          "title": "Goodbye Forever (Outro)",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/13.%20Goodbye%20Forever%20(Outro).mp3",
+          "trackNumber": 13
+        }
+      ]
+    },
     {
       "id": "vhs_sunset",
       "title": "VHS Sunset",
