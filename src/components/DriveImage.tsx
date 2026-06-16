@@ -17,13 +17,14 @@ export const DriveImage = memo(function DriveImage({
   priority = false, 
   ...props 
 }: DriveImageProps) {
-  const [loading, setLoading] = useState(true);
   const src = fileId ? getDriveImageUrl(fileId) : fallbackSrc;
+  const [loading, setLoading] = useState(true);
+  const [prevSrc, setPrevSrc] = useState(src);
 
-  // Simple sync with cached or already completed image references
-  useEffect(() => {
+  if (src !== prevSrc) {
+    setPrevSrc(src);
     setLoading(true);
-  }, [src]);
+  }
 
   return (
     <div className={`relative ${className} overflow-hidden bg-white/5`}> 
