@@ -5,8 +5,6 @@ interface PlayerContextType {
   currentTrack: Track | null;
   currentProject: Project | null;
   isPlaying: boolean;
-  progress: number;
-  duration: number;
   volume: number;
   queue: Track[];
   playTrack: (track: Track, project: Project, queue?: Track[]) => void;
@@ -15,6 +13,7 @@ interface PlayerContextType {
   prevTrack: () => void;
   seek: (time: number) => void;
   setVolume: (vol: number) => void;
+  audioRef: React.RefObject<HTMLAudioElement | null>;
 }
 
 const PlayerContext = createContext<PlayerContextType | null>(null);
@@ -29,8 +28,6 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [duration, setDuration] = useState(0);
   const [volume, setVolumeState] = useState((() => {
     try {
       const saved = localStorage.getItem('rw_volume');
@@ -68,14 +65,6 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
     audio.volume = volume;
     audioRef.current = audio;
 
-    const handleTimeUpdate = () => {
-      setProgress(audio.currentTime);
-    };
-
-    const handleLoadedMetadata = () => {
-      setDuration(audio.duration || 0);
-    };
-
     const handleEnded = () => {
       const { queue: currentQueue, currentTrack: activeTrack, currentProject: activeProj } = activeStateRef.current;
       if (!activeTrack || currentQueue.length === 0) return;
@@ -87,13 +76,9 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
       }
     };
 
-    audio.addEventListener('timeupdate', handleTimeUpdate);
-    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
     audio.addEventListener('ended', handleEnded);
 
     return () => {
-      audio.removeEventListener('timeupdate', handleTimeUpdate);
-      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
       audio.removeEventListener('ended', handleEnded);
       audio.pause();
     };
@@ -173,7 +158,6 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
   const seek = (time: number) => {
     if (audioRef.current) {
       audioRef.current.currentTime = time;
-      setProgress(time);
     }
   };
 
@@ -193,8 +177,6 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
         currentTrack,
         currentProject,
         isPlaying,
-        progress,
-        duration,
         volume,
         queue,
         playTrack,
@@ -202,7 +184,8 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
         nextTrack,
         prevTrack,
         seek,
-        setVolume
+        setVolume,
+        audioRef
       }}
     >
       {children}

@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, NavLink } from 'react-router-dom';
 import { LibraryProvider } from './context/LibraryContext';
 import { PlayerProvider } from './context/PlayerContext';
 import { Sidebar } from './components/Sidebar';
 import { PlayerBar } from './components/PlayerBar';
 import { Home as HomeIcon, Search as SearchIcon, Disc3 as DiscIcon, Mic2 as MicIcon, Music as MusicIcon, History as HistoryIcon } from 'lucide-react';
-// Import pages
-import { Home } from './pages/Home';
-import { AlbumView } from './pages/AlbumView';
-import { LibraryView } from './pages/LibraryView';
-import { SearchView } from './pages/SearchView';
-import { TimelineView } from './pages/TimelineView';
+import { PasswordBarrier } from './components/PasswordBarrier';
+
+// Lazy-load pages
+const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })));
+const AlbumView = lazy(() => import('./pages/AlbumView').then(m => ({ default: m.AlbumView })));
+const LibraryView = lazy(() => import('./pages/LibraryView').then(m => ({ default: m.LibraryView })));
+const SearchView = lazy(() => import('./pages/SearchView').then(m => ({ default: m.SearchView })));
+const TimelineView = lazy(() => import('./pages/TimelineView').then(m => ({ default: m.TimelineView })));
 
 export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const mobileLinkClass = ({ isActive }: { isActive: boolean }) => 
     `flex flex-col items-center gap-1 text-[9px] uppercase font-bold tracking-widest transition-colors ${
       isActive ? 'text-cyan-450 text-cyan-400' : 'text-white/50 hover:text-white'
     }`;
+
+  const loadingSpinner = (
+    <div className="h-full flex flex-col items-center justify-center text-white/40 bg-[#050505] min-h-[400px]">
+      <div className="w-8 h-8 rounded-full border-2 border-t-cyan-400 border-r-transparent border-b-cyan-450 border-l-transparent animate-spin mb-4" />
+      <span className="font-mono text-[10px] uppercase tracking-widest text-white/30">Loading Unit...</span>
+    </div>
+  );
+
+  if (!isAuthenticated) {
+    return <PasswordBarrier onSuccess={() => setIsAuthenticated(true)} />;
+  }
 
   return (
     <LibraryProvider>
@@ -42,17 +57,19 @@ export default function App() {
                 </div>
 
                 <div className="flex-1">
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/search" element={<SearchView />} />
-                    <Route path="/albums" element={<LibraryView filterType="Album" title="Albums" />} />
-                    <Route path="/eps" element={<LibraryView filterType="EP" title="EPs" />} />
-                    <Route path="/singles" element={<LibraryView filterType="Single" title="Singles" />} />
-                    <Route path="/timeline" element={<TimelineView />} />
-                    <Route path="/roadmap" element={<Navigate to="/" replace />} />
-                    <Route path="/project/:id" element={<AlbumView />} />
-                    <Route path="*" element={<Navigate to="/" replace />} />
-                  </Routes>
+                  <Suspense fallback={loadingSpinner}>
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/search" element={<SearchView />} />
+                      <Route path="/albums" element={<LibraryView filterType="Album" title="Albums" />} />
+                      <Route path="/eps" element={<LibraryView filterType="EP" title="EPs" />} />
+                      <Route path="/singles" element={<LibraryView filterType="Single" title="Singles" />} />
+                      <Route path="/timeline" element={<TimelineView />} />
+                      <Route path="/roadmap" element={<Navigate to="/" replace />} />
+                      <Route path="/project/:id" element={<AlbumView />} />
+                      <Route path="*" element={<Navigate to="/" replace />} />
+                    </Routes>
+                  </Suspense>
                 </div>
 
                 {/* Mobile Bottom Navigation */}

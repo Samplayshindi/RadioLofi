@@ -149,11 +149,19 @@ export const LibraryProvider = ({ children }: { children: ReactNode }) => {
     };
   }, [projects]);
 
-  const getProjectRuntime = (project: Project) => {
-    return project.tracks.reduce((total, track) => {
-      return total + (durations[track.id] || 0);
-    }, 0);
-  };
+  const projectRuntimes = React.useMemo(() => {
+    const runtimes: Record<string, number> = {};
+    projects.forEach(p => {
+      runtimes[p.id] = p.tracks.reduce((total, track) => {
+        return total + (durations[track.id] || 0);
+      }, 0);
+    });
+    return runtimes;
+  }, [projects, durations]);
+
+  const getProjectRuntime = React.useCallback((project: Project) => {
+    return projectRuntimes[project.id] || 0;
+  }, [projectRuntimes]);
 
   return (
     <LibraryContext.Provider value={{ projects, loading, error, refresh: fetchCatalog, durations, getProjectRuntime }}>

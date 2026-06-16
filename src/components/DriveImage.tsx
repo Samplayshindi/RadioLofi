@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { getDriveImageUrl } from '../lib/drive';
 
 export interface DriveImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -9,7 +9,7 @@ export interface DriveImageProps extends React.ImgHTMLAttributes<HTMLImageElemen
   priority?: boolean;
 }
 
-export function DriveImage({ 
+export const DriveImage = memo(function DriveImage({ 
   fileId, 
   fallbackSrc = '/placeholder.png', 
   className, 
@@ -20,10 +20,9 @@ export function DriveImage({
   const [loading, setLoading] = useState(true);
   const src = fileId ? getDriveImageUrl(fileId) : fallbackSrc;
 
+  // Simple sync with cached or already completed image references
   useEffect(() => {
-    const img = new Image();
-    img.src = src;
-    img.onload = () => setLoading(false);
+    setLoading(true);
   }, [src]);
 
   return (
@@ -34,9 +33,10 @@ export function DriveImage({
         loading={priority ? "eager" : "lazy"}
         decoding={priority ? "sync" : "async"}
         referrerPolicy="no-referrer"
+        onLoad={() => setLoading(false)}
         className={`w-full h-full object-cover transition-all duration-300 ${loading ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
         {...props}
       />
     </div>
   );
-}
+});

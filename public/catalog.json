@@ -342,6 +342,58 @@
           "trackNumber": 7
         }
       ]
+    },
+    {
+      "id": "endless_sky",
+      "title": "Endless Sky",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/Endless%20Sky/Poster.jpg",
+      "tracks": [
+        {
+          "id": "t_endless_sky",
+          "title": "Endless Sky",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7f1d24fe3fab67a8ecfd21270937f22596c7a29a/Endless%20Sky/Endless%20Sky.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "waiting_for_food",
+      "title": "Waiting For Food",
+      "type": "EP",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/waiting%20for%20food/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_is_it_ready_yet",
+          "title": "Is it ready yet",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/3acbcb63d2be08f1360ea1713f5b89c394d5fcf8/waiting%20for%20food/1.%20Is%20it%20ready%20yet.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_walking_to_the_kitchen",
+          "title": "walking to the kitchen",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/3acbcb63d2be08f1360ea1713f5b89c394d5fcf8/waiting%20for%20food/2.%20walking%20to%20the%20kitchen.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_eating_on_the_couch",
+          "title": "eating on the couch",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/3acbcb63d2be08f1360ea1713f5b89c394d5fcf8/waiting%20for%20food/3.%20eating%20on%20the%20couch.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_spilled_a_little_bit",
+          "title": "spilled a little bit",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/3acbcb63d2be08f1360ea1713f5b89c394d5fcf8/waiting%20for%20food/4.%20spilled%20a%20little%20bit.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_putting_the_plate_in_the_sink",
+          "title": "putting the plate in the sink",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/3acbcb63d2be08f1360ea1713f5b89c394d5fcf8/waiting%20for%20food/5.%20putting%20the%20plate%20in%20the%20sink.mp3",
+          "trackNumber": 5
+        }
+      ]
     }
   ]
 }

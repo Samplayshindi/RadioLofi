@@ -11,7 +11,35 @@ function formatTime(seconds: number) {
 }
 
 export function PlayerBar() {
-  const { currentTrack, currentProject, isPlaying, progress, duration, volume, togglePlayPause, nextTrack, prevTrack, seek, setVolume } = usePlayer();
+  const { currentTrack, currentProject, isPlaying, volume, togglePlayPause, nextTrack, prevTrack, seek, setVolume, audioRef } = usePlayer();
+  const [progress, setProgress] = React.useState(0);
+  const [duration, setDuration] = React.useState(0);
+
+  React.useEffect(() => {
+    const audio = audioRef?.current;
+    if (!audio) return;
+
+    setProgress(audio.currentTime || 0);
+    setDuration(audio.duration || 0);
+
+    const handleTimeUpdate = () => {
+      setProgress(audio.currentTime || 0);
+    };
+
+    const handleDurationChange = () => {
+      setDuration(audio.duration || 0);
+    };
+
+    audio.addEventListener('timeupdate', handleTimeUpdate);
+    audio.addEventListener('loadedmetadata', handleDurationChange);
+    audio.addEventListener('durationchange', handleDurationChange);
+
+    return () => {
+      audio.removeEventListener('timeupdate', handleTimeUpdate);
+      audio.removeEventListener('loadedmetadata', handleDurationChange);
+      audio.removeEventListener('durationchange', handleDurationChange);
+    };
+  }, [audioRef, currentTrack]);
 
   if (!currentTrack) {
     return (
@@ -20,7 +48,9 @@ export function PlayerBar() {
   }
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    seek(Number(e.target.value));
+    const val = Number(e.target.value);
+    seek(val);
+    setProgress(val);
   };
 
   const handleVolume = (e: React.ChangeEvent<HTMLInputElement>) => {

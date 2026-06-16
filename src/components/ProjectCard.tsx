@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Project } from '../types';
 import { DriveImage } from './DriveImage';
@@ -13,7 +13,7 @@ interface ProjectCardProps {
   key?: React.Key;
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
   const navigate = useNavigate();
   const { playTrack, currentProject, isPlaying, togglePlayPause } = usePlayer();
   const { getProjectRuntime } = useLibrary();
@@ -97,4 +97,4 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
     </motion.div>
   );
-}
+});
