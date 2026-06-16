@@ -63,7 +63,7 @@ html, body {
   }
 
   .aurora-bg {
-    position: absolute;
+    position: fixed;
     width: 600px;
     height: 600px;
     border-radius: 50%;

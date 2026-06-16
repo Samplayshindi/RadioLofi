@@ -9,6 +9,36 @@ export function LibraryView({ filterType, title }: { filterType: ProjectType; ti
 
   const filtered = projects.filter(p => p.type === filterType);
 
+  const [visibleCount, setVisibleCount] = React.useState(15);
+
+  const visibleProjects = React.useMemo(() => {
+    return filtered.slice(0, visibleCount);
+  }, [filtered, visibleCount]);
+
+  React.useEffect(() => {
+    setVisibleCount(15); // Reset when category changes
+  }, [filterType]);
+
+  React.useEffect(() => {
+    if (visibleCount >= filtered.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleCount((prev) => Math.min(prev + 15, filtered.length));
+        }
+      },
+      { rootMargin: '300px' }
+    );
+
+    const sentinel = document.getElementById('library-grid-sentinel');
+    if (sentinel) {
+      observer.observe(sentinel);
+    }
+
+    return () => observer.disconnect();
+  }, [filtered, visibleCount]);
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -25,10 +55,11 @@ export function LibraryView({ filterType, title }: { filterType: ProjectType; ti
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-        {filtered.map(project => (
+        {visibleProjects.map(project => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>
+      <div id="library-grid-sentinel" className="h-10 w-full" />
 
       {filtered.length === 0 && (
         <div className="text-white/30 mt-20 text-center text-xs font-mono uppercase tracking-widest">

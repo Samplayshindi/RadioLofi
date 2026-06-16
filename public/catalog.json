@@ -2,6 +2,108 @@
   "lastUpdated": "2026-06-15T20:07:47Z",
   "projects": [
     {
+      "id": "vhs_sunset",
+      "title": "VHS Sunset",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/radio/main/VHS%20Sunset/cover.jpg",
+      "tracks": [
+        {
+          "id": "t_vhs_sunset_1",
+          "title": "VHS Sunset",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/9ac3a76d890015dcf476d431e29eefb0355a1b0f/VHS%20Sunset/VHS%20Sunset.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "coastline",
+      "title": "Coastline",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/radio/main/coastline/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_coastline_1",
+          "title": "Coastline",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/9ac3a76d890015dcf476d431e29eefb0355a1b0f/coastline/Coastline.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "sad_tunes_for_the_moment_pt1",
+      "title": "Sad Tunes For The Moment pt.1",
+      "type": "Album",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/sad%20tunes%20for%20the%20moment%20pt.%201/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_last_light_fading_intro",
+          "title": "Last Light Fading (Intro)",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/1.%20Last%20Light%20Fading%20(Intro).mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_nothing_feels_the_same",
+          "title": "nothing feels the same",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/2.%20nothing%20feels%20the%20same.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_cold_room",
+          "title": "cold room",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/3.%20cold%20room.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_i_think_im_losing_it",
+          "title": "i think i'm losing it",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/4.%20i%20think%20i'm%20losing%20it.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_please_dont_text_back",
+          "title": "please don't text back",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/5.%20%20please%20don't%20text%20back.mp3",
+          "trackNumber": 5
+        },
+        {
+          "id": "t_staring_at_the_wall",
+          "title": "staring at the wall",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/6.%20staring%20at%20the%20wall.mp3",
+          "trackNumber": 6
+        },
+        {
+          "id": "t_headphones_on_full_volume",
+          "title": "headphones on full volume",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/7.%20headphones%20on%20full%20volume.mp3",
+          "trackNumber": 7
+        },
+        {
+          "id": "t_lost_track_of_time",
+          "title": "lost track of time",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/8.%20lost%20track%20of%20time.mp3",
+          "trackNumber": 8
+        },
+        {
+          "id": "t_rain_on_the_roof",
+          "title": "rain on the roof",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/9.%20rain%20on%20the%20roof.mp3",
+          "trackNumber": 9
+        },
+        {
+          "id": "t_it_is_what_it_is",
+          "title": "it is what it is",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/10.%20it%20is%20what%20it%20is.mp3",
+          "trackNumber": 10
+        },
+        {
+          "id": "t_fading_out_outro",
+          "title": "fading out... (Outro)",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/11.%20fading%20out...%20(Outro).mp3",
+          "trackNumber": 11
+        }
+      ]
+    },
+    {
       "id": "booting_up_the_old_laptop",
       "title": "Booting Up The Old Laptop",
       "type": "Album",

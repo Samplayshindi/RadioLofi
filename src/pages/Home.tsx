@@ -29,6 +29,32 @@ export function Home() {
 
   const recentlyAdded = projects; // Display all indexed projects
 
+  const [visibleCount, setVisibleCount] = React.useState(15);
+
+  const visibleProjects = React.useMemo(() => {
+    return recentlyAdded.slice(0, visibleCount);
+  }, [recentlyAdded, visibleCount]);
+
+  React.useEffect(() => {
+    if (visibleCount >= recentlyAdded.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleCount((prev) => Math.min(prev + 15, recentlyAdded.length));
+        }
+      },
+      { rootMargin: '300px' } // Pre-load 300px before reaching viewport
+    );
+
+    const sentinel = document.getElementById('grid-sentinel');
+    if (sentinel) {
+      observer.observe(sentinel);
+    }
+
+    return () => observer.disconnect();
+  }, [recentlyAdded, visibleCount]);
+
   const stats = React.useMemo(() => {
     return {
       totalProjects: projects.length,
@@ -135,10 +161,11 @@ export function Home() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 sm:gap-6">
-            {recentlyAdded.map(project => (
+            {visibleProjects.map(project => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
+          <div id="grid-sentinel" className="h-10 w-full" />
         </div>
       </div>
     </div>

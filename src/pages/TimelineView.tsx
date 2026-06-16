@@ -20,6 +20,36 @@ export function TimelineView() {
     return projects.filter(p => p.type === filter);
   }, [projects, filter]);
 
+  const [visibleCount, setVisibleCount] = useState(10);
+
+  const visibleProjects = useMemo(() => {
+    return filteredProjects.slice(0, visibleCount);
+  }, [filteredProjects, visibleCount]);
+
+  React.useEffect(() => {
+    setVisibleCount(10); // Reset when filter changes
+  }, [filter]);
+
+  React.useEffect(() => {
+    if (visibleCount >= filteredProjects.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleCount((prev) => Math.min(prev + 10, filteredProjects.length));
+        }
+      },
+      { rootMargin: '300px' }
+    );
+
+    const sentinel = document.getElementById('timeline-sentinel');
+    if (sentinel) {
+      observer.observe(sentinel);
+    }
+
+    return () => observer.disconnect();
+  }, [filteredProjects, visibleCount]);
+
   if (loading) {
     return (
       <div className="h-full min-h-screen flex flex-col items-center justify-center text-white/40 bg-[#050505]">
@@ -101,7 +131,7 @@ export function TimelineView() {
         <div className="relative pl-6 md:pl-10 border-l border-white/10 space-y-12 ml-4">
           
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, idx) => {
+            {visibleProjects.map((project, idx) => {
               const isCurrent = currentProject?.id === project.id;
               const isCurrentlyPlaying = isCurrent && isPlaying;
               const runtime = getProjectRuntime(project);
@@ -199,6 +229,7 @@ export function TimelineView() {
               );
             })}
           </AnimatePresence>
+          <div id="timeline-sentinel" className="h-10 w-full" />
 
           {filteredProjects.length === 0 && (
             <div className="text-white/20 text-center py-20 text-xs font-mono uppercase tracking-widest leading-loose">
