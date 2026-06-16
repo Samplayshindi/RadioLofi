@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, Disc3, Mic2, Music, Search } from 'lucide-react';
+import { Home, Disc3, Mic2, Music, Search, History } from 'lucide-react';
 
 export function Sidebar() {
   const linkClasses = ({ isActive }: { isActive: boolean }) =>
@@ -32,6 +32,9 @@ export function Sidebar() {
         </NavLink>
         <NavLink to="/search" className={linkClasses}>
           <Search className="w-4 h-4" /> Search
+        </NavLink>
+        <NavLink to="/timeline" className={linkClasses}>
+          <History className="w-4 h-4" /> Timeline
         </NavLink>
       </nav>
 

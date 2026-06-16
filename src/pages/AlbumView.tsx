@@ -4,12 +4,13 @@ import { useLibrary } from '../context/LibraryContext';
 import { DriveImage } from '../components/DriveImage';
 import { usePlayer } from '../context/PlayerContext';
 import { Play, Clock, Pause, ChevronLeft, Volume2 } from 'lucide-react';
+import { formatTrackDuration, formatProjectRuntime } from '../lib/time';
 import { motion } from 'motion/react';
 
 export function AlbumView() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { projects } = useLibrary();
+  const { projects, durations, getProjectRuntime } = useLibrary();
   const { currentTrack, playTrack, currentProject, isPlaying, togglePlayPause } = usePlayer();
 
   const project = projects.find(p => p.id === id);
@@ -27,6 +28,8 @@ export function AlbumView() {
 
   const isCurrentProject = currentProject?.id === project.id;
   const isProjectPlaying = isCurrentProject && isPlaying;
+  
+  const projectRuntime = getProjectRuntime(project);
 
   const handlePlayAll = () => {
     if (project.tracks.length > 0) {
@@ -84,7 +87,7 @@ export function AlbumView() {
             {project.title}
           </h1>
           
-          <div className="flex items-center gap-2 text-sm text-white/50 font-semibold">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 text-sm text-white/50 font-semibold">
             <img 
               src="https://raw.githubusercontent.com/Samplayshindi/radio/main/cropped_circle_image.png" 
               alt="Radio Waves" 
@@ -94,6 +97,8 @@ export function AlbumView() {
             <span className="text-white hover:text-cyan-400 transition-colors select-none font-bold">Radio Waves</span>
             <span>•</span>
             <span className="text-xs font-mono font-normal">{project.tracks.length} track{project.tracks.length !== 1 && 's'}</span>
+            <span>•</span>
+            <span className="text-xs font-mono font-normal text-cyan-450 text-cyan-400">{formatProjectRuntime(projectRuntime, project.type)}</span>
           </div>
         </div>
       </div>
@@ -130,6 +135,7 @@ export function AlbumView() {
           {project.tracks.map((track, i) => {
             const isThisTrackActive = currentTrack?.id === track.id;
             const isThisTrackPlaying = isThisTrackActive && isPlaying;
+            const itemDuration = durations[track.id] || 0;
 
             return (
               <div 
@@ -176,9 +182,9 @@ export function AlbumView() {
                   {track.title}
                 </div>
 
-                {/* Placeholder track timing */}
-                <div className="text-right text-xs font-mono text-white/30">
-                  --:--
+                {/* Dynamic track timing parsed from background audio elements */}
+                <div className={`text-right text-xs font-mono ${isThisTrackActive ? 'text-cyan-300 font-bold' : 'text-white/30'}`}>
+                  {formatTrackDuration(itemDuration)}
                 </div>
               </div>
             );

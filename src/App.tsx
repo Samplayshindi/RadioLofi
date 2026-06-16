@@ -4,12 +4,13 @@ import { LibraryProvider } from './context/LibraryContext';
 import { PlayerProvider } from './context/PlayerContext';
 import { Sidebar } from './components/Sidebar';
 import { PlayerBar } from './components/PlayerBar';
-import { Home as HomeIcon, Search as SearchIcon, Disc3 as DiscIcon, Mic2 as MicIcon, Music as MusicIcon } from 'lucide-react';
+import { Home as HomeIcon, Search as SearchIcon, Disc3 as DiscIcon, Mic2 as MicIcon, Music as MusicIcon, History as HistoryIcon } from 'lucide-react';
 // Import pages
 import { Home } from './pages/Home';
 import { AlbumView } from './pages/AlbumView';
 import { LibraryView } from './pages/LibraryView';
 import { SearchView } from './pages/SearchView';
+import { TimelineView } from './pages/TimelineView';
 
 export default function App() {
   const mobileLinkClass = ({ isActive }: { isActive: boolean }) => 
@@ -47,7 +48,7 @@ export default function App() {
                     <Route path="/albums" element={<LibraryView filterType="Album" title="Albums" />} />
                     <Route path="/eps" element={<LibraryView filterType="EP" title="EPs" />} />
                     <Route path="/singles" element={<LibraryView filterType="Single" title="Singles" />} />
-                    <Route path="/timeline" element={<Navigate to="/" replace />} />
+                    <Route path="/timeline" element={<TimelineView />} />
                     <Route path="/roadmap" element={<Navigate to="/" replace />} />
                     <Route path="/project/:id" element={<AlbumView />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
@@ -55,7 +56,7 @@ export default function App() {
                 </div>
 
                 {/* Mobile Bottom Navigation */}
-                <div className="md:hidden bg-[#070707]/95 backdrop-blur-md border-t border-white/5 flex justify-around py-3.5 px-2 sticky bottom-0 z-30 shrink-0">
+                <div className="md:hidden bg-[#070707]/95 backdrop-blur-md border-t border-white/5 flex justify-around py-3.5 px-1 sticky bottom-0 z-30 shrink-0">
                   <NavLink to="/" className={mobileLinkClass}>
                     <HomeIcon className="w-5 h-5" />
                     <span>Home</span>
@@ -63,6 +64,10 @@ export default function App() {
                   <NavLink to="/search" className={mobileLinkClass}>
                     <SearchIcon className="w-5 h-5" />
                     <span>Search</span>
+                  </NavLink>
+                  <NavLink to="/timeline" className={mobileLinkClass}>
+                    <HistoryIcon className="w-5 h-5" />
+                    <span>Timeline</span>
                   </NavLink>
                   <NavLink to="/albums" className={mobileLinkClass}>
                     <DiscIcon className="w-5 h-5" />

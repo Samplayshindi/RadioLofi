@@ -264,6 +264,84 @@
           "trackNumber": 5
         }
       ]
+    },
+    {
+      "id": "purple_skyline",
+      "title": "Purple Skyline",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/purple%20skyline/cover.jpg",
+      "tracks": [
+        {
+          "id": "t_purple_skyline",
+          "title": "Purple Skyline",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7f70e628bcdeafa28d6f3729aabb390961ea147a/purple%20skyline/purple%20skyline.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "purple_skyline_neon_synth",
+      "title": "Purple Skyline (Neon Synth)",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/purple%20skyline/NEON%20SYNTH.jpg",
+      "tracks": [
+        {
+          "id": "t_purple_skyline_neon_synth",
+          "title": "Purple Skyline (Neon Synth)",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7f70e628bcdeafa28d6f3729aabb390961ea147a/purple%20skyline/purple%20skyline%20(neon%20synth).mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "mixed_frequencies_reimagined",
+      "title": "Mixed Frequencies Reimagined",
+      "type": "Album",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/Mixed%20Frequencies%20Reimagined/Poster.jpg",
+      "tracks": [
+        {
+          "id": "t_fading_intro",
+          "title": "Fading Intro",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/1.%20Fading%20Intro.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_after_rain",
+          "title": "After Rain",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/2.%20After%20Rain.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_concentrations",
+          "title": "Concentrations",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/3.%20Concentrations.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_aurora",
+          "title": "Aurora",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/4.%20Aurora.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_dawn_rise",
+          "title": "Dawn Rise",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/5.%20Dawn%20Rise.mp3",
+          "trackNumber": 5
+        },
+        {
+          "id": "t_soft_spoken",
+          "title": "Soft Spoken",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/6.%20Soft%20Spoken.mp3",
+          "trackNumber": 6
+        },
+        {
+          "id": "t_have_a_good_one",
+          "title": "Have A Good One",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/7.%20Have%20A%20Good%20One.mp3",
+          "trackNumber": 7
+        }
+      ]
     }
   ]
 }

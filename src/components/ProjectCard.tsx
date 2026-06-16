@@ -4,6 +4,8 @@ import { Project } from '../types';
 import { DriveImage } from './DriveImage';
 import { Play, Pause } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
+import { useLibrary } from '../context/LibraryContext';
+import { formatProjectRuntime } from '../lib/time';
 import { motion } from 'motion/react';
 
 interface ProjectCardProps {
@@ -14,9 +16,13 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   const navigate = useNavigate();
   const { playTrack, currentProject, isPlaying, togglePlayPause } = usePlayer();
+  const { getProjectRuntime } = useLibrary();
 
   const isCurrent = currentProject?.id === project.id;
   const isCurrentlyPlaying = isCurrent && isPlaying;
+  
+  const runtime = getProjectRuntime(project);
+  const runtimeStr = formatProjectRuntime(runtime, project.type);
 
   const handlePlayClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -82,9 +88,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <h4 className="font-bold text-sm text-white truncate mb-0.5 group-hover:text-cyan-300 transition-colors">
           {project.title}
         </h4>
-        <div className="flex items-center justify-between text-[10px] uppercase font-bold tracking-wider text-white/45">
+        <div className="flex flex-wrap items-center justify-between gap-1 text-[10px] uppercase font-bold tracking-wider text-white/45">
           <span>{project.type}</span>
-          <span>{project.tracks.length} tracks</span>
+          <span className="text-right truncate max-w-full">
+            {project.tracks.length} track{project.tracks.length !== 1 ? 's' : ''} • {runtimeStr}
+          </span>
         </div>
       </div>
     </motion.div>

@@ -1,11 +1,13 @@
 import React from 'react';
 import { useLibrary } from '../context/LibraryContext';
 import { ProjectCard } from '../components/ProjectCard';
-import { LoaderIcon } from 'lucide-react';
+import { LoaderIcon, History } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 
 export function Home() {
-  const { projects, loading, error } = useLibrary();
+  const { projects, loading, error, getProjectRuntime } = useLibrary();
+  const navigate = useNavigate();
 
   if (loading) {
     return (
@@ -29,8 +31,25 @@ export function Home() {
 
   const stats = {
     totalProjects: projects.length,
-    totalTracks: projects.reduce((acc, p) => acc + p.tracks.length, 0)
+    totalTracks: projects.reduce((acc, p) => acc + p.tracks.length, 0),
+    totalAlbums: projects.filter(p => p.type === 'Album').length,
+    totalEPs: projects.filter(p => p.type === 'EP').length,
+    totalSingles: projects.filter(p => p.type === 'Single').length,
   };
+
+  const totalRuntimeInSeconds = projects.reduce((total, p) => total + getProjectRuntime(p), 0);
+  const formattedLibraryRuntime = (() => {
+    if (totalRuntimeInSeconds <= 0) return 'Calculating...';
+    const h = Math.floor(totalRuntimeInSeconds / 3600);
+    const m = Math.floor((totalRuntimeInSeconds % 3600) / 60);
+    const s = Math.floor(totalRuntimeInSeconds % 60);
+
+    const parts = [];
+    if (h > 0) parts.push(`${h}h`);
+    if (m > 0) parts.push(`${m}m`);
+    parts.push(`${s}s`);
+    return parts.join(' ');
+  })();
 
   return (
     <div className="relative pb-24 flex-1 flex flex-col overflow-x-hidden min-h-screen bg-[#050505]">
@@ -53,7 +72,7 @@ export function Home() {
             />
           </div>
 
-          <div className="flex flex-col items-center md:items-start">
+          <div className="flex flex-col items-center md:items-start w-full">
             <div className="flex items-center gap-2 mb-3">
               <span className="bg-cyan-500/10 text-cyan-400 border border-cyan-400/20 px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-widest font-black flex items-center gap-1.5 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
@@ -65,10 +84,32 @@ export function Home() {
               Radio Waves
             </h2>
 
-            <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 text-xs font-semibold text-white/50 tracking-wider font-mono">
-              <span className="text-white/80">{stats.totalProjects} Releases</span>
-              <span>•</span>
-              <span className="text-white/80">{stats.totalTracks} Audio Tracks</span>
+            {/* Comprehensive statistics grid tray */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mt-4 w-full text-left border-t border-white/5 pt-5 relative z-10 font-mono">
+              <div className="bg-white/[0.015] border border-white/5 hover:border-white/10 rounded-xl p-2.5 transition-colors">
+                <p className="text-[9px] text-white/40 uppercase font-bold tracking-wider mb-0.5">Total Releases</p>
+                <p className="text-md sm:text-lg font-bold text-white">{stats.totalProjects}</p>
+              </div>
+              <div className="bg-white/[0.015] border border-white/5 hover:border-white/10 rounded-xl p-2.5 transition-colors">
+                <p className="text-[9px] text-white/40 uppercase font-bold tracking-wider mb-0.5">Total Tracks</p>
+                <p className="text-md sm:text-lg font-bold text-white">{stats.totalTracks}</p>
+              </div>
+              <div className="bg-white/[0.015] border border-white/5 hover:border-white/10 rounded-xl p-2.5 transition-colors">
+                <p className="text-[9px] text-white/40 uppercase font-bold tracking-wider mb-0.5">Albums</p>
+                <p className="text-md sm:text-lg font-bold text-[#ff007f]">{stats.totalAlbums}</p>
+              </div>
+              <div className="bg-white/[0.015] border border-white/5 hover:border-white/10 rounded-xl p-2.5 transition-colors">
+                <p className="text-[9px] text-white/40 uppercase font-bold tracking-wider mb-0.5">EPs</p>
+                <p className="text-md sm:text-lg font-bold text-[#00f2fe]">{stats.totalEPs}</p>
+              </div>
+              <div className="bg-white/[0.015] border border-white/5 hover:border-white/10 rounded-xl p-2.5 transition-colors">
+                <p className="text-[9px] text-white/40 uppercase font-bold tracking-wider mb-0.5">Singles</p>
+                <p className="text-md sm:text-lg font-bold text-[#7f00ff]">{stats.totalSingles}</p>
+              </div>
+              <div className="bg-white/[0.015] border border-white/5 hover:border-white/10 rounded-xl p-2.5 transition-colors col-span-2 sm:col-span-1 md:col-span-1">
+                <p className="text-[9px] text-cyan-400/80 uppercase font-bold tracking-wider mb-0.5">Total Runtime</p>
+                <p className="text-md sm:text-lg font-bold text-cyan-400 truncate">{formattedLibraryRuntime}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -77,14 +118,18 @@ export function Home() {
       {/* Main Grid Section */}
       <div className="relative z-10 w-full px-6 md:px-12 flex-1 max-w-7xl mx-auto">
         <div className="mb-12">
-          <div className="flex items-center justify-between mb-8 border-b border-white/5 pb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-4">
             <h3 className="text-lg md:text-xl font-extrabold text-white tracking-tight flex items-center gap-2">
               <span className="h-2 w-2 rounded-full rgb-btn bg-cyan-500 shadow-md" />
               Complete Discography
             </h3>
-            <span className="text-xs font-bold text-white/30 uppercase tracking-widest font-mono">
-              Index Catalog
-            </span>
+            <button
+              onClick={() => navigate('/timeline')}
+              className="flex items-center justify-center gap-2 px-4.5 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-400/20 text-xs font-bold tracking-wider uppercase hover:bg-cyan-400 hover:text-black hover:border-transparent transition-all shadow-[0_0_15px_rgba(6,182,212,0.1)] active:scale-95 duration-300"
+            >
+              <History className="w-3.5 h-3.5" />
+              View Timeline Path
+            </button>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 sm:gap-6">
