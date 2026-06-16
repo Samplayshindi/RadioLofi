@@ -1,6 +1,124 @@
 {
-  "lastUpdated": "2026-06-15T08:22:31Z",
+  "lastUpdated": "2026-06-15T20:07:47Z",
   "projects": [
+    {
+      "id": "booting_up_the_old_laptop",
+      "title": "Booting Up The Old Laptop",
+      "type": "Album",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/booting%20up%20the%20old%20laptop/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_blowing_dust",
+          "title": "Blowing Dust",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/1.%20Blowing%20Dust.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_loud_fan",
+          "title": "Loud Fan",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/2.%20Loud%20Fan.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_loading_screen",
+          "title": "Loading Screen",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/3.%20Loading%20Screen.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_old_screenshots",
+          "title": "Old Screenshots",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/4.%20Old%20Screenshots.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_we_built_this",
+          "title": "We Built This a Long Time Ago",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/5.%20we%20built%20this%20a%20long%20time%20ago.mp3",
+          "trackNumber": 5
+        },
+        {
+          "id": "t_no_friends_online",
+          "title": "No Friends Online",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/6.%20No%20Friends%20Online.mp3",
+          "trackNumber": 6
+        },
+        {
+          "id": "t_driving_around_same_map",
+          "title": "Driving Around The Same Map",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/7.%20Driving%20Around%20The%20Same%20Map.mp3",
+          "trackNumber": 7
+        },
+        {
+          "id": "t_cheat_codes",
+          "title": "Cheat Codes",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/8.%20Cheat%20Codes.mp3",
+          "trackNumber": 8
+        },
+        {
+          "id": "t_sunset_in_game",
+          "title": "Sunset In Game",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/9.%20Sunset%20In%20Game.mp3",
+          "trackNumber": 9
+        },
+        {
+          "id": "t_old_save_file",
+          "title": "Old Save File",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/10.%20Old%20Save%20File.mp3",
+          "trackNumber": 10
+        },
+        {
+          "id": "t_battery_dying",
+          "title": "Battery Dying",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/11.%20Battery%20Dying.mp3",
+          "trackNumber": 11
+        },
+        {
+          "id": "t_turn_off",
+          "title": "Turn Off",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/12.%20Turn%20Off.mp3",
+          "trackNumber": 12
+        }
+      ]
+    },
+    {
+      "id": "ocean_view_hotel",
+      "title": "Ocean View Hotel",
+      "type": "EP",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/ocean%20view%20hotel/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_having_fun",
+          "title": "having fun",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/15dfa9aff0a33dc6b68cd1b68ae7c618bd0ec9ae/ocean%20view%20hotel/1.%20having%20fun.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_neon_lights",
+          "title": "neon lights",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/15dfa9aff0a33dc6b68cd1b68ae7c618bd0ec9ae/ocean%20view%20hotel/2.%20neon%20lights.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_radio_is_on",
+          "title": "radio is on",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/15dfa9aff0a33dc6b68cd1b68ae7c618bd0ec9ae/ocean%20view%20hotel/3.%20radio%20is%20on.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_leave_me_alone",
+          "title": "leave me alone",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/15dfa9aff0a33dc6b68cd1b68ae7c618bd0ec9ae/ocean%20view%20hotel/4.%20leave%20me%20alone.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_one_last_night_ride",
+          "title": "one last night ride",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/15dfa9aff0a33dc6b68cd1b68ae7c618bd0ec9ae/ocean%20view%20hotel/5.%20one%20last%20night%20ride.mp3",
+          "trackNumber": 5
+        }
+      ]
+    },
     {
       "id": "between_two_frequencies_pt2",
       "title": "Between Two Frequencies Pt.2",

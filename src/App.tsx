@@ -12,16 +12,21 @@ import { LibraryView } from './pages/LibraryView';
 import { SearchView } from './pages/SearchView';
 
 export default function App() {
+  const mobileLinkClass = ({ isActive }: { isActive: boolean }) => 
+    `flex flex-col items-center gap-1 text-[9px] uppercase font-bold tracking-widest transition-colors ${
+      isActive ? 'text-cyan-450 text-cyan-400' : 'text-white/50 hover:text-white'
+    }`;
+
   return (
     <LibraryProvider>
       <PlayerProvider>
         <BrowserRouter>
-          <div className="bg-[#050505] text-white flex flex-col h-screen overflow-hidden font-sans selection:bg-purple-500/30">
+          <div className="bg-[#050505] text-white flex flex-col h-screen overflow-hidden font-sans selection:bg-cyan-500/30">
             <div className="flex flex-1 overflow-hidden h-[calc(100vh-90px)]">
               <Sidebar />
               <main className="flex-1 relative flex flex-col overflow-y-auto">
                 {/* Mobile Top Header (Mobile Artist Profile) */}
-                <div className="md:hidden flex items-center justify-between p-4 bg-black/80 backdrop-blur-md border-b border-white/5 sticky top-0 z-30 shrink-0">
+                <div className="md:hidden flex items-center justify-between p-4 bg-black/85 backdrop-blur-md border-b border-white/5 sticky top-0 z-30 shrink-0">
                   <div className="flex items-center gap-2">
                     <img 
                       src="https://raw.githubusercontent.com/Samplayshindi/radio/main/cropped_circle_image.png" 
@@ -29,7 +34,9 @@ export default function App() {
                       className="w-7 h-7 rounded-full object-cover shrink-0 border border-white/10" 
                       referrerPolicy="no-referrer"
                     />
-                    <span className="font-bold text-sm text-white tracking-tight">Radio Waves <span className="text-purple-400 text-xs ml-1 font-normal">Archive</span></span>
+                    <span className="font-bold text-sm text-white tracking-tight">
+                      Radio Waves <span className="text-cyan-400 text-xs ml-1 font-normal">Archive</span>
+                    </span>
                   </div>
                 </div>
 
@@ -48,24 +55,24 @@ export default function App() {
                 </div>
 
                 {/* Mobile Bottom Navigation */}
-                <div className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-md border-t border-white/5 flex justify-around py-3 px-2 sticky bottom-0 z-30 shrink-0">
-                  <NavLink to="/" className={({ isActive }) => `flex flex-col items-center gap-1 text-[10px] uppercase font-bold tracking-wider transition-colors ${isActive ? 'text-purple-400' : 'text-white/60 hover:text-white'}`}>
+                <div className="md:hidden bg-[#070707]/95 backdrop-blur-md border-t border-white/5 flex justify-around py-3.5 px-2 sticky bottom-0 z-30 shrink-0">
+                  <NavLink to="/" className={mobileLinkClass}>
                     <HomeIcon className="w-5 h-5" />
                     <span>Home</span>
                   </NavLink>
-                  <NavLink to="/search" className={({ isActive }) => `flex flex-col items-center gap-1 text-[10px] uppercase font-bold tracking-wider transition-colors ${isActive ? 'text-purple-400' : 'text-white/60 hover:text-white'}`}>
+                  <NavLink to="/search" className={mobileLinkClass}>
                     <SearchIcon className="w-5 h-5" />
                     <span>Search</span>
                   </NavLink>
-                  <NavLink to="/albums" className={({ isActive }) => `flex flex-col items-center gap-1 text-[10px] uppercase font-bold tracking-wider transition-colors ${isActive ? 'text-purple-400' : 'text-white/60 hover:text-white'}`}>
+                  <NavLink to="/albums" className={mobileLinkClass}>
                     <DiscIcon className="w-5 h-5" />
                     <span>Albums</span>
                   </NavLink>
-                  <NavLink to="/eps" className={({ isActive }) => `flex flex-col items-center gap-1 text-[10px] uppercase font-bold tracking-wider transition-colors ${isActive ? 'text-purple-400' : 'text-white/60 hover:text-white'}`}>
+                  <NavLink to="/eps" className={mobileLinkClass}>
                     <MicIcon className="w-5 h-5" />
                     <span>EPs</span>
                   </NavLink>
-                  <NavLink to="/singles" className={({ isActive }) => `flex flex-col items-center gap-1 text-[10px] uppercase font-bold tracking-wider transition-colors ${isActive ? 'text-purple-400' : 'text-white/60 hover:text-white'}`}>
+                  <NavLink to="/singles" className={mobileLinkClass}>
                     <MusicIcon className="w-5 h-5" />
                     <span>Singles</span>
                   </NavLink>

@@ -31,24 +31,62 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolumeState] = useState(1);
+  const [volume, setVolumeState] = useState((() => {
+    try {
+      const saved = localStorage.getItem('rw_volume');
+      return saved ? parseFloat(saved) : 0.8;
+    } catch {
+      return 0.8;
+    }
+  })());
   const [queue, setQueue] = useState<Track[]>([]);
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    audioRef.current = new Audio();
-    audioRef.current.volume = volume;
+  // Keep references to active state for listeners to avoid stale closures
+  const activeStateRef = useRef({
+    currentTrack,
+    currentProject,
+    queue,
+    isPlaying
+  });
 
-    const audio = audioRef.current;
-    
-    // Allow playing without CORS issues for direct Drive links
+  useEffect(() => {
+    activeStateRef.current = {
+      currentTrack,
+      currentProject,
+      queue,
+      isPlaying
+    };
+  }, [currentTrack, currentProject, queue, isPlaying]);
+
+  useEffect(() => {
+    // Persistent single audio instance
+    const audio = new Audio();
+    audio.preload = 'auto'; // Optimize buffering
     audio.crossOrigin = 'anonymous';
-    
-    const handleTimeUpdate = () => setProgress(audio.currentTime);
-    const handleLoadedMetadata = () => setDuration(audio.duration);
-    const handleEnded = () => nextTrack();
-    
+    audio.volume = volume;
+    audioRef.current = audio;
+
+    const handleTimeUpdate = () => {
+      setProgress(audio.currentTime);
+    };
+
+    const handleLoadedMetadata = () => {
+      setDuration(audio.duration || 0);
+    };
+
+    const handleEnded = () => {
+      const { queue: currentQueue, currentTrack: activeTrack, currentProject: activeProj } = activeStateRef.current;
+      if (!activeTrack || currentQueue.length === 0) return;
+      const currentIndex = currentQueue.findIndex(t => t.id === activeTrack.id);
+      if (currentIndex >= 0 && currentIndex < currentQueue.length - 1) {
+        playTrackInternal(currentQueue[currentIndex + 1], activeProj as Project, currentQueue);
+      } else {
+        setIsPlaying(false);
+      }
+    };
+
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
     audio.addEventListener('ended', handleEnded);
@@ -61,7 +99,7 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
     };
   }, []);
 
-  const playTrack = async (track: Track, project: Project, newQueue?: Track[]) => {
+  const playTrackInternal = async (track: Track, project: Project, newQueue?: Track[]) => {
     try {
       let src = track.driveFileId;
       if (!src.startsWith('/') && !src.startsWith('http')) {
@@ -70,45 +108,65 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
       
       setCurrentTrack(track);
       setCurrentProject(project);
-      if (newQueue) setQueue(newQueue);
+      if (newQueue) {
+        setQueue(newQueue);
+      }
       
       if (audioRef.current) {
         audioRef.current.src = src;
-        audioRef.current.play();
-        setIsPlaying(true);
+        audioRef.current.preload = 'auto';
+        try {
+          await audioRef.current.play();
+          setIsPlaying(true);
+        } catch (playErr) {
+          console.warn('Playback interrupted or failed:', playErr);
+          setIsPlaying(false);
+        }
       }
     } catch (err) {
       console.error('Failed to play track:', err);
     }
   };
 
+  const playTrack = (track: Track, project: Project, newQueue?: Track[]) => {
+    playTrackInternal(track, project, newQueue);
+  };
+
   const togglePlayPause = () => {
     if (!audioRef.current || !currentTrack) return;
     if (isPlaying) {
       audioRef.current.pause();
+      setIsPlaying(false);
     } else {
-      audioRef.current.play();
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch(err => {
+        console.warn('Play was prevented or failed:', err);
+      });
     }
-    setIsPlaying(!isPlaying);
   };
 
   const nextTrack = () => {
-    if (!currentTrack || queue.length === 0) return;
-    const currentIndex = queue.findIndex(t => t.id === currentTrack.id);
-    if (currentIndex >= 0 && currentIndex < queue.length - 1) {
-      playTrack(queue[currentIndex + 1], currentProject as Project, queue);
+    const { queue: currentQueue, currentTrack: activeTrack, currentProject: activeProj } = activeStateRef.current;
+    if (!activeTrack || currentQueue.length === 0) return;
+    const currentIndex = currentQueue.findIndex(t => t.id === activeTrack.id);
+    if (currentIndex >= 0 && currentIndex < currentQueue.length - 1) {
+      playTrackInternal(currentQueue[currentIndex + 1], activeProj as Project, currentQueue);
     }
   };
 
   const prevTrack = () => {
-    if (!currentTrack || queue.length === 0) return;
-    if (progress > 3) {
+    const { queue: currentQueue, currentTrack: activeTrack, currentProject: activeProj } = activeStateRef.current;
+    if (!activeTrack || currentQueue.length === 0) return;
+    
+    if (audioRef.current && audioRef.current.currentTime > 3) {
       seek(0);
       return;
     }
-    const currentIndex = queue.findIndex(t => t.id === currentTrack.id);
+    
+    const currentIndex = currentQueue.findIndex(t => t.id === activeTrack.id);
     if (currentIndex > 0) {
-      playTrack(queue[currentIndex - 1], currentProject as Project, queue);
+      playTrackInternal(currentQueue[currentIndex - 1], activeProj as Project, currentQueue);
     }
   };
 
@@ -124,6 +182,9 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
       audioRef.current.volume = vol;
     }
     setVolumeState(vol);
+    try {
+      localStorage.setItem('rw_volume', vol.toString());
+    } catch {}
   };
 
   return (
