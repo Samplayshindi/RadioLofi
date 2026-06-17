@@ -4,7 +4,7 @@ import { LibraryProvider } from './context/LibraryContext';
 import { PlayerProvider } from './context/PlayerContext';
 import { Sidebar } from './components/Sidebar';
 import { PlayerBar } from './components/PlayerBar';
-import { Home as HomeIcon, Search as SearchIcon, Disc3 as DiscIcon, Mic2 as MicIcon, Music as MusicIcon, History as HistoryIcon } from 'lucide-react';
+import { Home as HomeIcon, Search as SearchIcon, Disc3 as DiscIcon, Mic2 as MicIcon, Music as MusicIcon, History as HistoryIcon, Library as LibraryIcon } from 'lucide-react';
 import { PasswordBarrier } from './components/PasswordBarrier';
 
 // Lazy-load pages
@@ -61,6 +61,7 @@ export default function App() {
                     <Routes>
                       <Route path="/" element={<Home />} />
                       <Route path="/search" element={<SearchView />} />
+                      <Route path="/all" element={<LibraryView filterType="All" title="All Releases" />} />
                       <Route path="/albums" element={<LibraryView filterType="Album" title="Albums" />} />
                       <Route path="/eps" element={<LibraryView filterType="EP" title="EPs" />} />
                       <Route path="/singles" element={<LibraryView filterType="Single" title="Singles" />} />
@@ -77,6 +78,10 @@ export default function App() {
                   <NavLink to="/" className={mobileLinkClass}>
                     <HomeIcon className="w-5 h-5" />
                     <span>Home</span>
+                  </NavLink>
+                  <NavLink to="/all" className={mobileLinkClass}>
+                    <LibraryIcon className="w-5 h-5" />
+                    <span>All</span>
                   </NavLink>
                   <NavLink to="/search" className={mobileLinkClass}>
                     <SearchIcon className="w-5 h-5" />

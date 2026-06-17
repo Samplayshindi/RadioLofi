@@ -4,10 +4,10 @@ import { ProjectCard } from '../components/ProjectCard';
 import { ProjectType } from '../types';
 import { motion } from 'motion/react';
 
-export function LibraryView({ filterType, title }: { filterType: ProjectType; title: string }) {
+export function LibraryView({ filterType, title }: { filterType: 'All' | ProjectType; title: string }) {
   const { projects } = useLibrary();
 
-  const filtered = projects.filter(p => p.type === filterType);
+  const filtered = filterType === 'All' ? projects : projects.filter(p => p.type === filterType);
 
   const [visibleCount, setVisibleCount] = React.useState(15);
 

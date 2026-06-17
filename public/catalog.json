@@ -1,6 +1,216 @@
 {
-  "lastUpdated": "2026-06-16T14:11:00Z",
+  "lastUpdated": "2026-06-16T21:19:10Z",
   "projects": [
+    {
+      "id": "snowfall",
+      "title": "Snowfall",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/Snowfall/Poster.jpg",
+      "tracks": [
+        {
+          "id": "t_snowfall",
+          "title": "snowfall",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/b29568e942ec77a48593af525fc5da66924dde47/Snowfall/snowfall.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "routine",
+      "title": "Routine",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/Routine/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_routine",
+          "title": "Routine",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/2bf684d9374c56d0849361efdf2d558b26e5b94e/Routine/Routine.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "sexy_velvet_hours",
+      "title": "Sexy Velvet Hours",
+      "type": "Album",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/sexy%20velvet%20hours/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_silk_sheets",
+          "title": "silk sheets",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/1.%20silk%20sheets.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_eye_contact",
+          "title": "eye contact",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/2.%20eye%20contact.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_slow_touch",
+          "title": "slow touch",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/3.%20slow%20touch.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_shadows_on_the_wall",
+          "title": "shadows on the wall",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/4.%20shadows%20on%20the%20wall.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_breathe",
+          "title": "breathe",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/5.%20breathe.mp3",
+          "trackNumber": 5
+        },
+        {
+          "id": "t_skin_to_skin",
+          "title": "skin to skin",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/6.%20skin%20to%20skin.mp3",
+          "trackNumber": 6
+        },
+        {
+          "id": "t_morning",
+          "title": "Morning",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/7.%20Morning.mp3",
+          "trackNumber": 7
+        }
+      ]
+    },
+    {
+      "id": "blue_horizon",
+      "title": "Blue Horizon",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/blue%20horizon/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_blue_horizon",
+          "title": "blue horizon",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/997f829249639cbb1520ee02bbb36e18f493aa55/blue%20horizon/blue%20horizon.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "blue_skies_ahead",
+      "title": "Blue Skies Ahead",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/Blue%20Skies%20Ahead/Poster.jpg",
+      "tracks": [
+        {
+          "id": "t_blue_skies_ahead",
+          "title": "blue skies ahead",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c44d31060b59de9a80ef7d24e6969429d6e930b4/Blue%20Skies%20Ahead/blue%20skies%20ahead.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "rearview_ep",
+      "title": "Rearview",
+      "type": "EP",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/rearview%20ep/vibin.jpg",
+      "tracks": [
+        {
+          "id": "t_packing_boxes",
+          "title": "packing boxes",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c20d4db803a54da6540bcd805c78ad3a1a98f5ee/rearview%20ep/packing%20boxes.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_rearview",
+          "title": "rearview",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c20d4db803a54da6540bcd805c78ad3a1a98f5ee/rearview%20ep/rearview.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_untied",
+          "title": "untied",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c20d4db803a54da6540bcd805c78ad3a1a98f5ee/rearview%20ep/untied.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_miles_away",
+          "title": "miles away",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c20d4db803a54da6540bcd805c78ad3a1a98f5ee/rearview%20ep/miles%20away.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_new_area_code",
+          "title": "new area code",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c20d4db803a54da6540bcd805c78ad3a1a98f5ee/rearview%20ep/new%20area%20code.mp3",
+          "trackNumber": 5
+        }
+      ]
+    },
+    {
+      "id": "crt_glow",
+      "title": "CRT Glow",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/CRT%20Glow/poster%20CRT%20glow.jpg",
+      "tracks": [
+        {
+          "id": "t_crt_glow_1",
+          "title": "CRT Glow",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/8338854fe15a73463273b59f0d4b8d8158f6403c/CRT%20Glow/CRT%20Glow.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "static_rain",
+      "title": "Static Rain",
+      "type": "Single",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/static%20rain/poster%20static%20rain.jpg",
+      "tracks": [
+        {
+          "id": "t_static_rain_1",
+          "title": "Static Rain",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a550b6e53743e985b1a0490b2285728029e7c203/static%20rain/static%20rain.mp3",
+          "trackNumber": 1
+        }
+      ]
+    },
+    {
+      "id": "relapsed",
+      "title": "Relapsed",
+      "type": "EP",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/relapsed/poster.jpg",
+      "tracks": [
+        {
+          "id": "t_back_to_where_we_started",
+          "title": "back to where we started",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/adcbfd17e84281daa35ac028539687d99e898a52/relapsed/back%20to%20where%20we%20started.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_completely_defeated",
+          "title": "completely defeated",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/adcbfd17e84281daa35ac028539687d99e898a52/relapsed/completely%20defeated.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_failed_again",
+          "title": "failed again",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/adcbfd17e84281daa35ac028539687d99e898a52/relapsed/failed%20again.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_broken_cycle",
+          "title": "broken cycle",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/adcbfd17e84281daa35ac028539687d99e898a52/relapsed/broken%20cycle.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_relapsed",
+          "title": "relapsed",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/adcbfd17e84281daa35ac028539687d99e898a52/relapsed/relapsed.mp3",
+          "trackNumber": 5
+        }
+      ]
+    },
     {
       "id": "summer_beats_ep",
       "title": "Summer Beats EP",

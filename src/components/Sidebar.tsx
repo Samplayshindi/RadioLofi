@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, Disc3, Mic2, Music, Search, History } from 'lucide-react';
+import { Home, Disc3, Mic2, Music, Search, History, Library } from 'lucide-react';
 
 export function Sidebar() {
   const linkClasses = ({ isActive }: { isActive: boolean }) =>
@@ -43,6 +43,9 @@ export function Sidebar() {
         <h3 className="text-[10px] uppercase tracking-[0.2em] text-white/30 mb-3 px-3 font-semibold font-mono">
           Vault Categories
         </h3>
+        <NavLink to="/all" className={linkClasses}>
+          <Library className="w-4 h-4" /> All Releases
+        </NavLink>
         <NavLink to="/albums" className={linkClasses}>
           <Disc3 className="w-4 h-4" /> Albums
         </NavLink>
