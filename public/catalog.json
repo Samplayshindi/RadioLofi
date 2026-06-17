@@ -1,6 +1,74 @@
 {
-  "lastUpdated": "2026-06-16T21:19:10Z",
+  "lastUpdated": "2026-06-16T21:31:11Z",
   "projects": [
+    {
+      "id": "window_seat",
+      "title": "Window Seat",
+      "type": "Album",
+      "coverArtId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/main/window%20seat/Poster.jpg",
+      "tracks": [
+        {
+          "id": "t_terminal_departure",
+          "title": "terminal departure",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/terminal%20departure.mp3",
+          "trackNumber": 1
+        },
+        {
+          "id": "t_passing_headlights",
+          "title": "passing headlights",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/passing%20headlights.mp3",
+          "trackNumber": 2
+        },
+        {
+          "id": "t_rhythmic_clatter",
+          "title": "rhythmic clatter",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/rhythmic%20clatter.mp3",
+          "trackNumber": 3
+        },
+        {
+          "id": "t_window_seat",
+          "title": "window seat",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/window%20seat.mp3",
+          "trackNumber": 4
+        },
+        {
+          "id": "t_distant_crossing",
+          "title": "distant crossing",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/distant%20crossing.mp3",
+          "trackNumber": 5
+        },
+        {
+          "id": "t_engine_hum",
+          "title": "engine hum",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/engine%20hum.mp3",
+          "trackNumber": 6
+        },
+        {
+          "id": "t_3am_rest_stop",
+          "title": "3am rest stop",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/3am%20rest%20stop.mp3",
+          "trackNumber": 7
+        },
+        {
+          "id": "t_tunnel_vision",
+          "title": "tunnel vision",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/tunnel%20vision.mp3",
+          "trackNumber": 8
+        },
+        {
+          "id": "t_empty_carriage",
+          "title": "empty carriage",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/empty%20carriage.mp3",
+          "trackNumber": 9
+        },
+        {
+          "id": "t_final_destination",
+          "title": "final destination",
+          "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/final%20destination.mp3",
+          "trackNumber": 10
+        }
+      ]
+    },
     {
       "id": "snowfall",
       "title": "Snowfall",
