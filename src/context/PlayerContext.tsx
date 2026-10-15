@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, useRef, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useRef, useEffect, ReactNode, useCallback } from 'react';
 import { Track, Project } from '../types';
+import { normalizeAudioUrl } from '../lib/drive';
 
 interface PlayerContextType {
   currentTrack: Track | null;
@@ -7,6 +8,8 @@ interface PlayerContextType {
   isPlaying: boolean;
   volume: number;
   queue: Track[];
+  currentTime: number;
+  duration: number;
   playTrack: (track: Track, project: Project, queue?: Track[]) => void;
   togglePlayPause: () => void;
   nextTrack: () => void;
@@ -28,20 +31,22 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolumeState] = useState((() => {
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolumeState] = useState(() => {
     try {
       const saved = localStorage.getItem('rw_volume');
-      return saved ? parseFloat(saved) : 0.8;
+      return saved ? parseFloat(saved) : 0.85;
     } catch {
-      return 0.8;
+      return 0.85;
     }
-  })());
+  });
   const [queue, setQueue] = useState<Track[]>([]);
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Keep references to active state for listeners to avoid stale closures
-  const activeStateRef = useRef({
+  // Active state ref to avoid stale closures in event listeners
+  const stateRef = useRef({
     currentTrack,
     currentProject,
     queue,
@@ -49,7 +54,7 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
   });
 
   useEffect(() => {
-    activeStateRef.current = {
+    stateRef.current = {
       currentTrack,
       currentProject,
       queue,
@@ -57,40 +62,9 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
     };
   }, [currentTrack, currentProject, queue, isPlaying]);
 
-  useEffect(() => {
-    // Persistent single audio instance
-    const audio = new Audio();
-    audio.preload = 'auto'; // Optimize buffering
-    audio.crossOrigin = 'anonymous';
-    audio.volume = volume;
-    audioRef.current = audio;
-
-    const handleEnded = () => {
-      const { queue: currentQueue, currentTrack: activeTrack, currentProject: activeProj } = activeStateRef.current;
-      if (!activeTrack || currentQueue.length === 0) return;
-      const currentIndex = currentQueue.findIndex(t => t.id === activeTrack.id);
-      if (currentIndex >= 0 && currentIndex < currentQueue.length - 1) {
-        playTrackInternal(currentQueue[currentIndex + 1], activeProj as Project, currentQueue);
-      } else {
-        setIsPlaying(false);
-      }
-    };
-
-    audio.addEventListener('ended', handleEnded);
-
-    return () => {
-      audio.removeEventListener('ended', handleEnded);
-      audio.pause();
-    };
-  }, []);
-
-  const playTrackInternal = async (track: Track, project: Project, newQueue?: Track[]) => {
+  const playTrackInternal = useCallback(async (track: Track, project: Project, newQueue?: Track[]) => {
     try {
-      let src = track.driveFileId;
-      if (!src.startsWith('/') && !src.startsWith('http')) {
-        src = `https://drive.google.com/uc?export=download&id=${track.driveFileId}`;
-      }
-      
+      const src = normalizeAudioUrl(track.driveFileId);
       setCurrentTrack(track);
       setCurrentProject(project);
       if (newQueue) {
@@ -99,25 +73,45 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
       
       if (audioRef.current) {
         audioRef.current.src = src;
-        audioRef.current.preload = 'auto';
+        audioRef.current.load();
         try {
           await audioRef.current.play();
           setIsPlaying(true);
         } catch (playErr) {
-          console.warn('Playback interrupted or failed:', playErr);
+          console.warn('Playback interrupted:', playErr);
           setIsPlaying(false);
         }
       }
     } catch (err) {
       console.error('Failed to play track:', err);
     }
-  };
+  }, []);
 
-  const playTrack = (track: Track, project: Project, newQueue?: Track[]) => {
-    playTrackInternal(track, project, newQueue);
-  };
+  const nextTrack = useCallback(() => {
+    const { queue: q, currentTrack: ct, currentProject: cp } = stateRef.current;
+    if (!ct || q.length === 0) return;
+    const idx = q.findIndex(t => t.id === ct.id);
+    if (idx >= 0 && idx < q.length - 1) {
+      playTrackInternal(q[idx + 1], cp as Project, q);
+    }
+  }, [playTrackInternal]);
 
-  const togglePlayPause = () => {
+  const prevTrack = useCallback(() => {
+    const { queue: q, currentTrack: ct, currentProject: cp } = stateRef.current;
+    if (!ct || q.length === 0) return;
+    
+    if (audioRef.current && audioRef.current.currentTime > 3) {
+      audioRef.current.currentTime = 0;
+      return;
+    }
+    
+    const idx = q.findIndex(t => t.id === ct.id);
+    if (idx > 0) {
+      playTrackInternal(q[idx - 1], cp as Project, q);
+    }
+  }, [playTrackInternal]);
+
+  const togglePlayPause = useCallback(() => {
     if (!audioRef.current || !currentTrack) return;
     if (isPlaying) {
       audioRef.current.pause();
@@ -126,50 +120,77 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
       audioRef.current.play().then(() => {
         setIsPlaying(true);
       }).catch(err => {
-        console.warn('Play was prevented or failed:', err);
+        console.warn('Play was prevented:', err);
       });
     }
-  };
+  }, [currentTrack, isPlaying]);
 
-  const nextTrack = () => {
-    const { queue: currentQueue, currentTrack: activeTrack, currentProject: activeProj } = activeStateRef.current;
-    if (!activeTrack || currentQueue.length === 0) return;
-    const currentIndex = currentQueue.findIndex(t => t.id === activeTrack.id);
-    if (currentIndex >= 0 && currentIndex < currentQueue.length - 1) {
-      playTrackInternal(currentQueue[currentIndex + 1], activeProj as Project, currentQueue);
-    }
-  };
-
-  const prevTrack = () => {
-    const { queue: currentQueue, currentTrack: activeTrack, currentProject: activeProj } = activeStateRef.current;
-    if (!activeTrack || currentQueue.length === 0) return;
-    
-    if (audioRef.current && audioRef.current.currentTime > 3) {
-      seek(0);
-      return;
-    }
-    
-    const currentIndex = currentQueue.findIndex(t => t.id === activeTrack.id);
-    if (currentIndex > 0) {
-      playTrackInternal(currentQueue[currentIndex - 1], activeProj as Project, currentQueue);
-    }
-  };
-
-  const seek = (time: number) => {
+  const seek = useCallback((time: number) => {
     if (audioRef.current) {
       audioRef.current.currentTime = time;
+      setCurrentTime(time);
     }
-  };
+  }, []);
 
-  const setVolume = (vol: number) => {
+  const setVolume = useCallback((vol: number) => {
+    const clamped = Math.max(0, Math.min(1, vol));
     if (audioRef.current) {
-      audioRef.current.volume = vol;
+      audioRef.current.volume = clamped;
     }
-    setVolumeState(vol);
+    setVolumeState(clamped);
     try {
-      localStorage.setItem('rw_volume', vol.toString());
+      localStorage.setItem('rw_volume', clamped.toString());
     } catch {}
-  };
+  }, []);
+
+  // Initialize Audio element with robust event handling
+  useEffect(() => {
+    const audio = new Audio();
+    audio.preload = 'auto';
+    audio.crossOrigin = 'anonymous';
+    audio.volume = volume;
+    audioRef.current = audio;
+
+    const onTimeUpdate = () => setCurrentTime(audio.currentTime);
+    const onLoadedMetadata = () => setDuration(audio.duration || 0);
+    const onEnded = () => {
+      nextTrack();
+    };
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+
+    audio.addEventListener('timeupdate', onTimeUpdate);
+    audio.addEventListener('loadedmetadata', onLoadedMetadata);
+    audio.addEventListener('ended', onEnded);
+    audio.addEventListener('play', onPlay);
+    audio.addEventListener('pause', onPause);
+
+    return () => {
+      audio.removeEventListener('timeupdate', onTimeUpdate);
+      audio.removeEventListener('loadedmetadata', onLoadedMetadata);
+      audio.removeEventListener('ended', onEnded);
+      audio.removeEventListener('play', onPlay);
+      audio.removeEventListener('pause', onPause);
+      audio.pause();
+      audio.src = '';
+    };
+  }, [nextTrack, volume]);
+
+  // Global keyboard shortcuts (Space: play/pause when not in an input)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) {
+        return;
+      }
+      if (e.code === 'Space') {
+        e.preventDefault();
+        togglePlayPause();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [togglePlayPause]);
 
   return (
     <PlayerContext.Provider
@@ -179,7 +200,9 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
         isPlaying,
         volume,
         queue,
-        playTrack,
+        currentTime,
+        duration,
+        playTrack: playTrackInternal,
         togglePlayPause,
         nextTrack,
         prevTrack,

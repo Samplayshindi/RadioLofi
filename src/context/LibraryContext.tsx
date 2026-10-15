@@ -1,6 +1,10 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, useMemo, useCallback } from 'react';
 import { Project } from '../types';
 import { scanCatalog } from '../lib/drive';
+import { imagePreloader, PreloadStatus } from '../lib/imagePreloader';
+import staticDurations from '../lib/durations.json';
+
+const BOOMBOX_LOGO = "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/fecae3756d78e99e59964fdbe845c95cb42c645c/Retro_Cream_and_Burgundy_Boombox_cleaned-Photoroom.png";
 
 interface LibraryContextType {
   projects: Project[];
@@ -9,7 +13,16 @@ interface LibraryContextType {
   refresh: () => Promise<void>;
   durations: Record<string, number>;
   getProjectRuntime: (project: Project) => number;
-  fetchProjectDurations: (project: Project, limitTrackIds?: string[]) => Promise<void>;
+  preloadStatus: PreloadStatus;
+  stats: {
+    totalProjects: number;
+    totalTracks: number;
+    albumsCount: number;
+    epsCount: number;
+    singlesCount: number;
+    totalSeconds: number;
+    runtimeFormatted: string;
+  };
 }
 
 const LibraryContext = createContext<LibraryContextType | null>(null);
@@ -20,165 +33,124 @@ export const useLibrary = () => {
   return ctx;
 };
 
-export function normalizeAudioUrl(url: string): string {
-  if (!url) return '';
-  if (url.includes('github.com/') && url.includes('/blob/')) {
-    return url.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
-  }
-  if (!url.startsWith('/') && !url.startsWith('http')) {
-    return `https://drive.google.com/uc?export=download&id=${url}`;
-  }
-  return url;
-}
-
-const getAudioDuration = (trackId: string, url: string): Promise<number> => {
-  return new Promise((resolve) => {
-    const audio = new Audio();
-    audio.preload = 'metadata';
-    audio.crossOrigin = 'anonymous';
-    audio.src = url;
-    
-    const timeout = setTimeout(() => {
-      audio.src = '';
-      resolve(0);
-    }, 15000); // 15s timeout
-
-    audio.onloadedmetadata = () => {
-      clearTimeout(timeout);
-      const dur = audio.duration;
-      audio.src = '';
-      resolve(dur || 0);
-    };
-
-    audio.onerror = () => {
-      clearTimeout(timeout);
-      audio.src = '';
-      resolve(0);
-    };
-  });
-};
-
 export const LibraryProvider = ({ children }: { children: ReactNode }) => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [durations, setDurations] = useState<Record<string, number>>({});
+  const [preloadStatus, setPreloadStatus] = useState<PreloadStatus>(() => imagePreloader.getStatus());
 
-  const fetchCatalog = async () => {
+  // Subscribe to image preloading events
+  useEffect(() => {
+    return imagePreloader.subscribe((status) => {
+      setPreloadStatus(status);
+    });
+  }, []);
+
+  // Pre-loaded durations dictionary from static dataset + track metadata
+  const durations = useMemo<Record<string, number>>(() => {
+    const map: Record<string, number> = { ...(staticDurations as Record<string, number>) };
+    for (const p of projects) {
+      for (const t of p.tracks) {
+        if (t.duration) {
+          map[t.id] = t.duration;
+        }
+      }
+    }
+    return map;
+  }, [projects]);
+
+  const fetchCatalog = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
       const data = await scanCatalog();
       setProjects(data);
+
+      // Preload boombox logo immediately
+      imagePreloader.preload(BOOMBOX_LOGO, { priority: true });
+
+      // Automatically launch global image preloader across all projects in advance
+      if (typeof window !== 'undefined' && data.length > 0) {
+        imagePreloader.preloadCatalog(data);
+      }
     } catch (err: any) {
-      console.error(err);
+      console.error('Failed to load library catalog:', err);
       setError(err.message || 'Failed to scan catalog');
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchCatalog();
-  }, []);
+  }, [fetchCatalog]);
 
-  // Background Duration Fetcher - ONLY load existing cached items on startup to prevent network flood
-  useEffect(() => {
-    if (projects.length === 0) return;
+  // Instantaneous project runtime calculation (pure synchronous addition)
+  const getProjectRuntime = useCallback((project: Project): number => {
+    let total = 0;
+    for (let i = 0; i < project.tracks.length; i++) {
+      const t = project.tracks[i];
+      total += t.duration || durations[t.id] || 0;
+    }
+    return total;
+  }, [durations]);
 
-    const loaded: Record<string, number> = {};
-    projects.forEach(p => {
-      p.tracks.forEach(t => {
-        const cacheKey = `rw_dur_${t.id}`;
-        try {
-          const saved = localStorage.getItem(cacheKey);
-          if (saved) {
-            const val = parseFloat(saved);
-            if (val > 0) {
-              loaded[t.id] = val;
-            }
-          }
-        } catch (e) {
-          console.warn('Storage read error:', e);
-        }
-      });
-    });
+  // Instantaneous precomputed global archive statistics
+  const stats = useMemo(() => {
+    let totalTracks = 0;
+    let albumsCount = 0;
+    let epsCount = 0;
+    let singlesCount = 0;
+    let totalSeconds = 0;
 
-    setDurations(prev => ({ ...prev, ...loaded }));
-  }, [projects]);
+    for (let i = 0; i < projects.length; i++) {
+      const p = projects[i];
+      totalTracks += p.tracks.length;
 
-  // Lazy-load durations for a specific project on-demand
-  const fetchProjectDurations = React.useCallback(async (project: Project, limitTrackIds?: string[]) => {
-    const toFetch: { id: string; url: string }[] = [];
-    
-    const targetTracks = limitTrackIds 
-      ? project.tracks.filter(t => limitTrackIds.includes(t.id))
-      : project.tracks;
+      if (p.type === 'Album') albumsCount++;
+      else if (p.type === 'EP') epsCount++;
+      else if (p.type === 'Single') singlesCount++;
 
-    targetTracks.forEach(t => {
-      const cacheKey = `rw_dur_${t.id}`;
-      let isCached = false;
-      try {
-        const saved = localStorage.getItem(cacheKey);
-        if (saved && parseFloat(saved) > 0) {
-          isCached = true;
-        }
-      } catch {}
-
-      if (!isCached) {
-        toFetch.push({ id: t.id, url: normalizeAudioUrl(t.driveFileId) });
+      for (let j = 0; j < p.tracks.length; j++) {
+        const t = p.tracks[j];
+        totalSeconds += t.duration || durations[t.id] || 0;
       }
-    });
-
-    if (toFetch.length === 0) return;
-
-    // Fetch batch in small chunks of 3 concurrently to avoid browser resource choke
-    const results: { id: string; duration: number }[] = [];
-    const chunkSize = 3;
-    for (let i = 0; i < toFetch.length; i += chunkSize) {
-      const chunk = toFetch.slice(i, i + chunkSize);
-      const chunkResults = await Promise.all(
-        chunk.map(async (item) => {
-          const dur = await getAudioDuration(item.id, item.url);
-          return { id: item.id, duration: dur };
-        })
-      );
-      results.push(...chunkResults);
     }
 
-    const newDurations: Record<string, number> = {};
-    results.forEach(res => {
-      if (res.duration > 0) {
-        newDurations[res.id] = res.duration;
-        try {
-          localStorage.setItem(`rw_dur_${res.id}`, res.duration.toString());
-        } catch (err) {
-          console.warn('Storage quota margin exceeded:', err);
-        }
-      }
-    });
+    const hours = Math.floor(totalSeconds / 3600);
+    const mins = Math.floor((totalSeconds % 3600) / 60);
+    const secs = totalSeconds % 60;
 
-    if (Object.keys(newDurations).length > 0) {
-      setDurations(prev => ({ ...prev, ...newDurations }));
-    }
-  }, []);
+    const runtimeFormatted = hours > 0 
+      ? `${hours}h ${mins}m` 
+      : mins > 0 
+        ? `${mins}m ${secs}s` 
+        : `${secs}s`;
 
-  const projectRuntimes = React.useMemo(() => {
-    const runtimes: Record<string, number> = {};
-    projects.forEach(p => {
-      runtimes[p.id] = p.tracks.reduce((total, track) => {
-        return total + (durations[track.id] || 0);
-      }, 0);
-    });
-    return runtimes;
+    return {
+      totalProjects: projects.length,
+      totalTracks,
+      albumsCount,
+      epsCount,
+      singlesCount,
+      totalSeconds,
+      runtimeFormatted
+    };
   }, [projects, durations]);
 
-  const getProjectRuntime = React.useCallback((project: Project) => {
-    return projectRuntimes[project.id] || 0;
-  }, [projectRuntimes]);
+  const value = useMemo(() => ({
+    projects,
+    loading,
+    error,
+    refresh: fetchCatalog,
+    durations,
+    getProjectRuntime,
+    preloadStatus,
+    stats
+  }), [projects, loading, error, fetchCatalog, durations, getProjectRuntime, preloadStatus, stats]);
 
   return (
-    <LibraryContext.Provider value={{ projects, loading, error, refresh: fetchCatalog, durations, getProjectRuntime, fetchProjectDurations }}>
+    <LibraryContext.Provider value={value}>
       {children}
     </LibraryContext.Provider>
   );

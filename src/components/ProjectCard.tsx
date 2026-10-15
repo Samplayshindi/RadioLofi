@@ -2,92 +2,110 @@ import React, { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Project } from '../types';
 import { DriveImage } from './DriveImage';
-import { Play, Pause } from 'lucide-react';
+import { Play, Pause, Disc3, Clock } from 'lucide-react';
 import { usePlayer } from '../context/PlayerContext';
 import { useLibrary } from '../context/LibraryContext';
 import { formatProjectRuntime } from '../lib/time';
 
+import { imagePreloader } from '../lib/imagePreloader';
+
 interface ProjectCardProps {
   project: Project;
-  key?: React.Key;
+  priority?: boolean;
 }
 
-export const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
+export const ProjectCard = memo(function ProjectCard({ project, priority = false }: ProjectCardProps) {
   const navigate = useNavigate();
-  const { playTrack, currentProject, isPlaying, togglePlayPause } = usePlayer();
+  const { currentProject, isPlaying, playTrack, togglePlayPause } = usePlayer();
   const { getProjectRuntime } = useLibrary();
 
   const isCurrent = currentProject?.id === project.id;
-  const isCurrentlyPlaying = isCurrent && isPlaying;
-  
-  const runtime = getProjectRuntime(project);
-  const runtimeStr = formatProjectRuntime(runtime, project.type);
+  const isThisPlaying = isCurrent && isPlaying;
 
   const handlePlayClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (project.tracks.length > 0) {
-      if (isCurrent) {
-        togglePlayPause();
-      } else {
-        playTrack(project.tracks[0], project, project.tracks);
-      }
+    if (isCurrent) {
+      togglePlayPause();
+    } else if (project.tracks.length > 0) {
+      playTrack(project.tracks[0], project, project.tracks);
     }
   };
 
+  const handleCardClick = () => {
+    navigate(`/project/${project.id}`);
+  };
+
+  const handleMouseEnter = () => {
+    if (project.coverArtId) {
+      // Prefetch large 800px artwork in advance for the destination Album page
+      imagePreloader.preload(project.coverArtId, { priority: true, width: 800 });
+    }
+  };
+
+  const runtimeSec = getProjectRuntime(project);
+  const runtimeFormatted = formatProjectRuntime(runtimeSec);
+
   return (
-    <div 
-      onClick={() => navigate(`/project/${project.id}`)}
-      className={`animate-fade-in-up relative p-4 rounded-2xl cursor-pointer group transition-all duration-300 hover:-translate-y-1 select-none will-change-transform ${
-        isCurrent 
-          ? 'bg-white/10 ring-1 ring-cyan-500/30 shadow-[0_0_20px_rgba(0,250,250,0.05)]' 
-          : 'bg-white/[0.02] hover:bg-white/5 border border-white/5 hover:border-white/10'
-      }`}
+    <div
+      onClick={handleCardClick}
+      onMouseEnter={handleMouseEnter}
+      className="group relative flex flex-col bg-slate-900/40 dark:bg-[#0c101a]/70 hover:bg-slate-800/60 dark:hover:bg-[#121826] border border-white/[0.06] hover:border-cyan-500/30 rounded-2xl p-3.5 transition-all duration-200 cursor-pointer shadow-lg hover:shadow-cyan-500/10 hover:-translate-y-1 select-none"
     >
-      {/* Artwork Wrapper */}
-      <div className="relative aspect-square rounded-xl overflow-hidden mb-4 shadow-lg bg-black/40">
-        <DriveImage fileId={project.coverArtId} className="w-full h-full transform group-hover:scale-105 transition-transform duration-500" />
-        
-        {/* Glow overlay if playing */}
-        {isCurrentlyPlaying && (
-          <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 via-transparent to-pink-500/10 pointer-events-none" />
-        )}
+      {/* Artwork Container */}
+      <div className="relative aspect-square w-full rounded-xl overflow-hidden mb-3 bg-black/40">
+        <DriveImage
+          fileId={project.coverArtId}
+          alt={project.title}
+          priority={priority}
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
 
-        {/* Play Action Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px]">
-          <button 
-            type="button"
-            onClick={handlePlayClick}
-            className="w-12 h-12 rounded-full flex items-center justify-center text-black shadow-2xl scale-95 group-hover:scale-100 transition-all duration-300 rgb-btn"
-            aria-label={isCurrentlyPlaying ? 'Pause' : 'Play'}
-          >
-            {isCurrentlyPlaying ? (
-              <Pause className="w-5 h-5 text-white fill-current" />
-            ) : (
-              <Play className="w-5 h-5 text-white fill-current ml-0.5" />
-            )}
-          </button>
+        {/* Floating Quick Play Action Button */}
+        <button
+          onClick={handlePlayClick}
+          aria-label={isThisPlaying ? 'Pause' : 'Play'}
+          className={`absolute bottom-3 right-3 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 shadow-xl cursor-pointer ${
+            isThisPlaying
+              ? 'bg-cyan-400 text-black scale-100 opacity-100 shadow-cyan-400/40'
+              : 'bg-white text-black opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 hover:bg-cyan-400 hover:text-black hover:scale-105'
+          }`}
+        >
+          {isThisPlaying ? (
+            <Pause className="w-5 h-5 fill-current" />
+          ) : (
+            <Play className="w-5 h-5 fill-current ml-0.5" />
+          )}
+        </button>
+
+        {/* Format Badge */}
+        <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md border border-white/10 text-[10px] font-mono uppercase tracking-wider font-bold text-cyan-300">
+          {project.type}
         </div>
-
-        {/* Mini Waveforms if playing */}
-        {isCurrentlyPlaying && (
-          <div className="absolute bottom-3 right-3 flex gap-0.5 items-end h-4 w-4">
-            <span className="w-0.5 bg-cyan-400 animate-[bounce_0.8s_infinite]" style={{ animationDelay: '0.1s' }} />
-            <span className="w-0.5 bg-pink-500 animate-[bounce_0.8s_infinite]" style={{ animationDelay: '0.3s' }} />
-            <span className="w-0.5 bg-purple-400 animate-[bounce_0.8s_infinite]" style={{ animationDelay: '0.5s' }} />
-          </div>
-        )}
       </div>
 
-      {/* Metadata */}
-      <div className="min-w-0">
-        <h4 className="font-bold text-sm text-white truncate mb-0.5 group-hover:text-cyan-300 transition-colors">
+      {/* Release Details */}
+      <div className="flex flex-col flex-1 min-w-0">
+        <h3 className="font-display font-bold text-white text-base tracking-tight truncate group-hover:text-cyan-300 transition-colors">
           {project.title}
-        </h4>
-        <div className="flex flex-wrap items-center justify-between gap-1 text-[10px] uppercase font-bold tracking-wider text-white/45">
-          <span>{project.type}</span>
-          <span className="text-right truncate max-w-full">
-            {project.tracks.length} track{project.tracks.length !== 1 ? 's' : ''} • {runtimeStr}
+        </h3>
+        
+        <p className="text-xs text-slate-400 font-medium truncate mt-0.5">
+          Radio Waves
+        </p>
+
+        {/* Metadata Footer: Tracks count & Runtime */}
+        <div className="mt-3 pt-2.5 border-t border-white/[0.06] flex items-center justify-between text-[11px] font-mono text-slate-400">
+          <span className="flex items-center gap-1">
+            <Disc3 className="w-3.5 h-3.5 text-slate-500" />
+            {project.tracks.length} {project.tracks.length === 1 ? 'Track' : 'Tracks'}
           </span>
+
+          {runtimeSec > 0 && (
+            <span className="flex items-center gap-1 text-slate-400">
+              <Clock className="w-3 h-3 text-slate-500" />
+              {runtimeFormatted}
+            </span>
+          )}
         </div>
       </div>
     </div>

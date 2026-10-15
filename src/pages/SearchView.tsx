@@ -1,210 +1,203 @@
 import React, { useState, useMemo } from 'react';
 import { useLibrary } from '../context/LibraryContext';
 import { ProjectCard } from '../components/ProjectCard';
-import { Search, Play, Pause } from 'lucide-react';
-import { usePlayer } from '../context/PlayerContext';
-import { Project, Track } from '../types';
 import { DriveImage } from '../components/DriveImage';
-import { motion, AnimatePresence } from 'motion/react';
+import { Search, Play, Pause, Disc3, Music, X } from 'lucide-react';
+import { usePlayer } from '../context/PlayerContext';
+import { formatTrackDuration } from '../lib/time';
 
 export function SearchView() {
-  const { projects } = useLibrary();
+  const { projects, loading, durations } = useLibrary();
   const { currentTrack, playTrack, isPlaying, togglePlayPause } = usePlayer();
   const [query, setQuery] = useState('');
+  const [filterType, setFilterType] = useState<'All' | 'Album' | 'EP' | 'Single'>('All');
 
-  const q = query.toLowerCase().trim();
+  // Multi-target search: projects and songs
+  const { matchedProjects, matchedTracks } = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) {
+      return {
+        matchedProjects: filterType === 'All' ? projects : projects.filter(p => p.type === filterType),
+        matchedTracks: []
+      };
+    }
 
-  // Memoized lists to maximize frame rates and prevent heavy string indexing on high inputs
-  const filteredProjects = useMemo(() => {
-    if (!q) return [];
-    return projects.filter(
-      p => 
-        p.title.toLowerCase().includes(q) || 
-        p.type.toLowerCase().includes(q)
-    );
-  }, [projects, q]);
-
-  const filteredTracks = useMemo(() => {
-    if (q.length <= 1) return [];
-    const results: { track: Track; project: Project }[] = [];
-    projects.forEach(p => {
-      p.tracks.forEach(t => {
-        if (t.title.toLowerCase().includes(q)) {
-          results.push({ track: t, project: p });
-        }
-      });
+    // Projects match
+    const pMatches = projects.filter(p => {
+      const matchType = filterType === 'All' || p.type === filterType;
+      const matchText = p.title.toLowerCase().includes(q);
+      return matchType && matchText;
     });
-    return results;
-  }, [projects, q]);
 
-  const handleTrackClick = (track: Track, project: Project) => {
-    const isThisTrack = currentTrack?.id === track.id;
-    if (isThisTrack) {
+    // Individual Tracks match
+    const tMatches: { track: any; project: any }[] = [];
+    for (const p of projects) {
+      if (filterType !== 'All' && p.type !== filterType) continue;
+      for (const t of p.tracks) {
+        if (t.title.toLowerCase().includes(q)) {
+          tMatches.push({ track: t, project: p });
+        }
+      }
+    }
+
+    return { matchedProjects: pMatches, matchedTracks: tMatches };
+  }, [projects, query, filterType]);
+
+  const handleTrackSelect = (track: any, project: any) => {
+    if (currentTrack?.id === track.id) {
       togglePlayPause();
     } else {
       playTrack(track, project, project.tracks);
     }
   };
 
-  // Virtualization state for progressive infinite scroll matching search
-  const [visibleTracksCount, setVisibleTracksCount] = React.useState(15);
-  const [visibleProjectsCount, setVisibleProjectsCount] = React.useState(15);
-
-  React.useEffect(() => {
-    setVisibleTracksCount(15);
-    setVisibleProjectsCount(15);
-  }, [query]);
-
-  const visibleTracks = React.useMemo(() => {
-    return filteredTracks.slice(0, visibleTracksCount);
-  }, [filteredTracks, visibleTracksCount]);
-
-  const visibleProjects = React.useMemo(() => {
-    return filteredProjects.slice(0, visibleProjectsCount);
-  }, [filteredProjects, visibleProjectsCount]);
-
-  React.useEffect(() => {
-    const hasMoreTracks = visibleTracksCount < filteredTracks.length;
-    const hasMoreProjects = visibleProjectsCount < filteredProjects.length;
-    if (!hasMoreTracks && !hasMoreProjects) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          if (hasMoreTracks) {
-            setVisibleTracksCount((prev) => Math.min(prev + 15, filteredTracks.length));
-          }
-          if (hasMoreProjects) {
-            setVisibleProjectsCount((prev) => Math.min(prev + 15, filteredProjects.length));
-          }
-        }
-      },
-      { rootMargin: '300px' }
+  if (loading) {
+    return (
+      <div className="h-full flex flex-col items-center justify-center text-slate-500 bg-[#07090e] min-h-[500px]">
+        <Disc3 className="w-8 h-8 animate-spin text-cyan-400 mb-3" />
+        <span className="font-mono text-xs uppercase tracking-widest text-slate-400">Loading Search Index...</span>
+      </div>
     );
-
-    const sentinel = document.getElementById('search-sentinel');
-    if (sentinel) {
-      observer.observe(sentinel);
-    }
-
-    return () => observer.disconnect();
-  }, [filteredTracks, filteredProjects, visibleTracksCount, visibleProjectsCount]);
+  }
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="p-6 md:p-8 pb-24 max-w-7xl mx-auto w-full relative z-10"
-    >
-      {/* Search Input Box */}
-      <div className="relative mb-12 max-w-xl">
-        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-          <Search className="h-5 w-5 text-white/30" />
+    <div className="flex-1 flex flex-col bg-[#07090e] text-white min-h-screen px-6 md:px-12 py-8 pb-36 select-none overflow-x-hidden">
+      <div className="max-w-7xl mx-auto w-full">
+        {/* Search Header */}
+        <div className="mb-8">
+          <h1 className="font-display font-black text-3xl sm:text-4xl text-white tracking-tight mb-2">
+            Archive Search
+          </h1>
+          <p className="text-xs font-mono text-slate-400">
+            Search across 157 master tracks, singles, EPs, and albums
+          </p>
         </div>
-        <input
-          type="text"
-          className="block w-full pl-12 pr-4 py-4 bg-white/[0.03] border border-white/10 rounded-full text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-500/50 transition-all shadow-xl text-sm font-semibold tracking-wide"
-          placeholder="Search for tracks, albums, EPs, or singles..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      </div>
 
-      <AnimatePresence mode="wait">
-        {query ? (
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className="space-y-12"
-          >
-            {/* Track Results */}
-            {filteredTracks.length > 0 ? (
-              <section>
-                <h2 className="text-md uppercase font-bold tracking-widest text-[#00f2fe] mb-6 font-mono">
-                  Matching Audio Tracks ({filteredTracks.length})
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {visibleTracks.map(({ track, project }) => {
-                    const isThisCurrentTrack = currentTrack?.id === track.id;
-                    const isThisTrackPlaying = isThisCurrentTrack && isPlaying;
+        {/* Search Input Bar */}
+        <div className="relative mb-6">
+          <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search by song title, album, EP, or single..."
+            autoFocus
+            className="w-full pl-12 pr-10 py-4 bg-slate-900/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 text-sm font-sans outline-none focus:border-cyan-400/60 focus:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all"
+          />
+          {query && (
+            <button
+              onClick={() => setQuery('')}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
+        </div>
 
-                    return (
-                      <div 
-                        key={track.id}
-                        onClick={() => handleTrackClick(track, project)}
-                        className={`flex items-center gap-4 p-3 rounded-2xl cursor-pointer group transition-all duration-300 border select-none ${
-                          isThisCurrentTrack 
-                            ? 'bg-white/10 border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.05)]' 
-                            : 'bg-white/[0.02] border-white/5 hover:bg-white/5 hover:border-white/10'
+        {/* Filter Pills */}
+        <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-1">
+          {(['All', 'Album', 'EP', 'Single'] as const).map((type) => (
+            <button
+              key={type}
+              onClick={() => setFilterType(type)}
+              className={`px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                filterType === type
+                  ? 'bg-cyan-400 text-black shadow-md shadow-cyan-400/20'
+                  : 'bg-white/[0.04] text-slate-400 hover:text-white hover:bg-white/[0.08] border border-white/[0.06]'
+              }`}
+            >
+              {type === 'All' ? 'All Results' : `${type}s`}
+            </button>
+          ))}
+        </div>
+
+        {/* Track Results (if query exists) */}
+        {matchedTracks.length > 0 && (
+          <div className="mb-10">
+            <h2 className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold mb-4 flex items-center gap-2">
+              <Music className="w-4 h-4" /> Matching Tracks ({matchedTracks.length})
+            </h2>
+
+            <div className="space-y-1.5 max-h-96 overflow-y-auto pr-1">
+              {matchedTracks.map(({ track, project }) => {
+                const isThis = currentTrack?.id === track.id;
+                const isThisPlaying = isThis && isPlaying;
+                const sec = track.duration || durations[track.id] || 0;
+
+                return (
+                  <div
+                    key={`${project.id}_${track.id}`}
+                    onClick={() => handleTrackSelect(track, project)}
+                    className={`group flex items-center justify-between p-3 rounded-xl transition-all cursor-pointer ${
+                      isThis
+                        ? 'bg-cyan-500/10 border border-cyan-500/20 text-cyan-300'
+                        : 'bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.04] text-slate-300 hover:text-white'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3.5 min-w-0 pr-4">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleTrackSelect(track, project);
+                        }}
+                        className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all ${
+                          isThisPlaying
+                            ? 'bg-cyan-400 text-black'
+                            : 'bg-white/10 group-hover:bg-white group-hover:text-black text-white'
                         }`}
                       >
-                        <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 shadow-md bg-black/40">
-                          <DriveImage fileId={project.coverArtId} className="w-full h-full" />
-                          <div className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity ${isThisCurrentTrack ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
-                            {isThisTrackPlaying ? (
-                              <Pause className="w-4 h-4 text-cyan-400 fill-current" />
-                            ) : (
-                              <Play className="w-4 h-4 text-white fill-current ml-0.5" />
-                            )}
-                          </div>
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <div className={`font-bold text-sm truncate mb-0.5 transition-colors ${isThisCurrentTrack ? 'text-cyan-300' : 'text-white'}`}>
-                            {track.title}
-                          </div>
-                          <div className="text-[10px] text-white/40 truncate uppercase tracking-widest font-mono">
-                            {project.title}
-                          </div>
-                        </div>
+                        {isThisPlaying ? (
+                          <Pause className="w-3.5 h-3.5 fill-current" />
+                        ) : (
+                          <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                        )}
+                      </button>
+
+                      <div className="w-9 h-9 rounded-lg overflow-hidden shrink-0 border border-white/10 bg-black/40">
+                        <DriveImage fileId={project.coverArtId} alt={project.title} className="w-full h-full object-cover" />
                       </div>
-                    );
-                  })}
-                </div>
-              </section>
-            ) : (
-              q.length > 1 && (
-                <div className="text-white/30 text-xs font-mono">No matching track titles.</div>
-              )
-            )}
 
-            {/* Project / Album Results */}
-            {filteredProjects.length > 0 && (
-              <section>
-                <h2 className="text-md uppercase font-bold tracking-widest text-[#ff007f] mb-6 font-mono">
-                  Matching Releases ({filteredProjects.length})
-                </h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                  {visibleProjects.map(project => (
-                    <ProjectCard key={project.id} project={project} />
-                  ))}
-                </div>
-              </section>
-            )}
+                      <div className="flex flex-col min-w-0">
+                        <span className={`text-sm font-bold truncate ${isThis ? 'text-cyan-300' : 'text-white'}`}>
+                          {track.title}
+                        </span>
+                        <span className="text-xs text-slate-500 truncate">
+                          {project.title} • Radio Waves
+                        </span>
+                      </div>
+                    </div>
 
-            {(filteredTracks.length > visibleTracksCount || filteredProjects.length > visibleProjectsCount) && (
-              <div id="search-sentinel" className="h-10 w-full flex items-center justify-center text-white/20 text-[10px] uppercase font-mono tracking-widest">
-                Scanning more matches...
-              </div>
-            )}
-
-            {filteredProjects.length === 0 && filteredTracks.length === 0 && (
-              <div className="text-center text-white/30 py-20 text-xs font-mono uppercase tracking-widest">
-                No archived results found for "{query}"
-              </div>
-            )}
-          </motion.div>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-white/20 text-xs font-mono uppercase tracking-widest py-10"
-          >
-            Awaiting query inputs...
-          </motion.div>
+                    <span className="font-mono text-xs text-slate-400 tabular-nums">
+                      {formatTrackDuration(sec)}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         )}
-      </AnimatePresence>
-    </motion.div>
+
+        {/* Releases Grid */}
+        <div>
+          <h2 className="text-xs font-mono uppercase tracking-widest text-slate-400 font-bold mb-4 flex items-center gap-2">
+            <Disc3 className="w-4 h-4" /> 
+            {query ? `Matching Releases (${matchedProjects.length})` : 'All Releases'}
+          </h2>
+
+          {matchedProjects.length === 0 ? (
+            <div className="p-12 text-center rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <Disc3 className="w-10 h-10 opacity-20 mx-auto mb-3" />
+              <p className="text-slate-400 text-sm font-mono">No releases found matching "{query}"</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+              {matchedProjects.map((p, idx) => (
+                <ProjectCard key={p.id} project={p} priority={idx < 8} />
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }

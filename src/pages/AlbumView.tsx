@@ -1,65 +1,31 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useLibrary } from '../context/LibraryContext';
 import { DriveImage } from '../components/DriveImage';
 import { usePlayer } from '../context/PlayerContext';
-import { Play, Clock, Pause, ChevronLeft, Volume2, Music } from 'lucide-react';
+import { Play, Clock, Pause, ChevronLeft, Disc3 } from 'lucide-react';
 import { formatTrackDuration, formatProjectRuntime } from '../lib/time';
-import { motion } from 'motion/react';
 
 export function AlbumView() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { projects, durations, getProjectRuntime, fetchProjectDurations } = useLibrary();
+  const { projects, durations, getProjectRuntime } = useLibrary();
   const { currentTrack, playTrack, currentProject, isPlaying, togglePlayPause } = usePlayer();
 
-  const project = projects.find(p => p.id === id);
-
-  // Progressive rendering state for displaying long tracks lists cleanly list
-  const [visibleCount, setVisibleCount] = React.useState(15);
-
-  const visibleTracks = React.useMemo(() => {
-    if (!project) return [];
-    return project.tracks.slice(0, visibleCount);
-  }, [project, visibleCount]);
-
-  React.useEffect(() => {
-    setVisibleCount(15); // Reset limit on project mount or change
-  }, [id]);
-
-  React.useEffect(() => {
-    if (project && visibleTracks.length > 0) {
-      const visibleTrackIds = visibleTracks.map(t => t.id);
-      fetchProjectDurations(project, visibleTrackIds);
-    }
-  }, [project, visibleTracks, fetchProjectDurations]);
-
-  React.useEffect(() => {
-    if (!project || visibleCount >= project.tracks.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisibleCount((prev) => Math.min(prev + 10, project.tracks.length));
-        }
-      },
-      { rootMargin: '250px' } // Preload tracks 250px before entering viewport
-    );
-
-    const sentinel = document.getElementById('tracklist-sentinel');
-    if (sentinel) {
-      observer.observe(sentinel);
-    }
-
-    return () => observer.disconnect();
-  }, [project, visibleCount]);
+  const project = useMemo(() => {
+    return projects.find(p => p.id === id);
+  }, [projects, id]);
 
   if (!project) {
     return (
-      <div className="h-full flex flex-col items-center justify-center text-white/40 bg-[#050505]">
-        <p className="font-mono text-xs mb-4">Project Archive Not Found</p>
-        <button onClick={() => navigate('/')} className="text-sm font-bold text-cyan-400 hover:underline">
-          Return to Discography
+      <div className="h-full flex flex-col items-center justify-center text-slate-500 bg-[#07090e] p-8 text-center min-h-[500px]">
+        <Disc3 className="w-12 h-12 opacity-20 mb-4 text-cyan-400" />
+        <p className="font-display font-black text-xl text-white mb-4">Release Not Found</p>
+        <button 
+          onClick={() => navigate('/')} 
+          className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 hover:text-black hover:bg-cyan-400 px-5 py-2.5 rounded-xl border border-cyan-400/30 transition-all cursor-pointer"
+        >
+          Return to Archive
         </button>
       </div>
     );
@@ -67,15 +33,14 @@ export function AlbumView() {
 
   const isCurrentProject = currentProject?.id === project.id;
   const isProjectPlaying = isCurrentProject && isPlaying;
-  
-  const projectRuntime = getProjectRuntime(project);
+  const totalRuntimeSeconds = getProjectRuntime(project);
+  const totalRuntimeFormatted = formatProjectRuntime(totalRuntimeSeconds);
 
   const handlePlayAll = () => {
     if (project.tracks.length > 0) {
       if (isCurrentProject) {
         togglePlayPause();
       } else {
-        // Start streaming album from the beginning with target queue
         playTrack(project.tracks[0], project, project.tracks);
       }
     }
@@ -91,169 +56,188 @@ export function AlbumView() {
   };
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="pb-32 min-h-screen bg-[#050505] relative z-10 select-none scroll-smooth"
-    >
-      {/* Decorative localized ambient glowing spot */}
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-500/10 to-transparent blur-[120px] pointer-events-none -z-10" />
-
-      {/* Header action bar */}
-      <div className="px-6 md:px-8 pt-6 flex items-center justify-between">
-        <button 
+    <div className="min-h-screen bg-[#07090e] text-white pb-36 select-none overflow-x-hidden">
+      {/* Top Back Navigation Bar */}
+      <div className="px-6 md:px-12 py-4 border-b border-white/[0.06] flex items-center justify-between bg-[#07090e]/80 backdrop-blur-md sticky top-0 z-30">
+        <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-1.5 text-xs font-bold text-white/60 hover:text-white transition-colors uppercase tracking-wider font-mono bg-white/[0.02] hover:bg-white/5 border border-white/5 px-3 py-2 rounded-full"
+          className="flex items-center gap-2 text-slate-400 hover:text-white text-xs font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer"
         >
-          <ChevronLeft className="w-4 h-4" /> Back to Catalog
+          <ChevronLeft className="w-4 h-4" />
+          <span>Back to Catalog</span>
         </button>
-      </div>
 
-      {/* Header Info */}
-      <div className="flex flex-col md:flex-row items-center md:items-end gap-6 md:gap-10 px-6 md:px-8 py-8 md:py-12">
-        <div className="w-56 h-56 sm:w-64 sm:h-64 shrink-0 shadow-[0_4px_45px_rgba(0,0,0,0.85)] overflow-hidden rounded-2xl bg-white/5 border border-white/10 group relative">
-          <DriveImage fileId={project.coverArtId} priority={true} className="w-full h-full transform group-hover:scale-105 transition-transform duration-700" />
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors pointer-events-none" />
-        </div>
-        
-        <div className="flex flex-col items-center md:items-start text-center md:text-left min-w-0 flex-1">
-          <div className="text-[10px] uppercase tracking-[0.25em] font-black text-white/40 mb-2 font-mono">
-            Verified {project.type}
-          </div>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight mb-4 max-w-full break-words">
-            {project.title}
-          </h1>
-          
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 text-sm text-white/50 font-semibold font-mono">
-            <img 
-              src="https://raw.githubusercontent.com/Samplayshindi/radio/main/cropped_circle_image.png" 
-              alt="Radio Waves" 
-              className="w-5 h-5 rounded-full object-cover shrink-0 ring-1 ring-white/10" 
-              referrerPolicy="no-referrer"
-            />
-            <span className="text-white hover:text-cyan-400 transition-colors select-none font-bold">Radio Waves</span>
-            <span className="text-white/20">•</span>
-            <span className="text-xs font-normal text-white/70">{project.tracks.length} track{project.tracks.length !== 1 && 's'}</span>
-            <span className="text-white/20">•</span>
-            <span className="text-xs font-normal text-cyan-400">{formatProjectRuntime(projectRuntime, project.type)}</span>
-          </div>
+        <div className="text-xs font-mono text-cyan-400/80 font-bold uppercase tracking-wider">
+          {project.type} Release
         </div>
       </div>
 
-      {/* Sticky Action / Playback Controls Bar */}
-      <div className="sticky top-[53px] md:top-0 z-20 bg-[#050505]/90 backdrop-blur-md px-6 md:px-8 py-4 flex items-center justify-between gap-4 border-b border-white/5 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center gap-4 min-w-0">
-          <button 
-            onClick={handlePlayAll}
-            className="px-6 py-3 rounded-full flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl font-bold text-xs tracking-wider uppercase rgb-btn select-none shrink-0"
-            id={`play-all-btn-${project.id}`}
-          >
-            {isProjectPlaying ? (
-              <>
-                <Pause className="w-4 h-4 fill-current text-white animate-pulse" />
-                <span>Pause Release</span>
-              </>
-            ) : (
-              <>
-                <Play className="w-4 h-4 fill-current text-white ml-0.5" />
-                <span>Play Release</span>
-              </>
+      {/* Hero Header Area */}
+      <section className="relative px-6 md:px-12 py-10 md:py-14 border-b border-white/[0.06] overflow-hidden">
+        {/* Ambient background glow from artwork */}
+        <div className="absolute top-0 right-1/3 w-[600px] h-[400px] bg-cyan-500/[0.08] rounded-full blur-[160px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-end gap-8 md:gap-12 relative z-10">
+          {/* Prominent Artwork Display */}
+          <div className="relative group shrink-0">
+            <div className="w-56 h-56 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/50">
+              <DriveImage
+                fileId={project.coverArtId}
+                alt={project.title}
+                priority={true}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Album Information */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left min-w-0 flex-1">
+            <span className="px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-xs font-mono font-bold uppercase tracking-wider mb-3">
+              {project.type}
+            </span>
+
+            <h1 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight mb-2">
+              {project.title}
+            </h1>
+
+            <p className="text-lg text-slate-300 font-semibold mb-6">
+              Radio Waves
+            </p>
+
+            {/* Metadata Badges */}
+            <div className="flex items-center flex-wrap gap-4 text-xs font-mono text-slate-400 mb-8">
+              <span className="flex items-center gap-1.5">
+                <Disc3 className="w-4 h-4 text-slate-500" />
+                {project.tracks.length} {project.tracks.length === 1 ? 'Track' : 'Tracks'}
+              </span>
+
+              {totalRuntimeSeconds > 0 && (
+                <>
+                  <span className="text-white/20">•</span>
+                  <span className="flex items-center gap-1.5 text-cyan-300">
+                    <Clock className="w-4 h-4 text-cyan-400" />
+                    Total Runtime: {totalRuntimeFormatted}
+                  </span>
+                </>
+              )}
+            </div>
+
+            {/* Play All Button */}
+            {project.tracks.length > 0 && (
+              <button
+                onClick={handlePlayAll}
+                className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-cyan-400 hover:bg-cyan-300 text-black font-bold text-sm uppercase tracking-wider transition-all duration-200 shadow-xl shadow-cyan-400/25 active:scale-95 cursor-pointer"
+              >
+                {isProjectPlaying ? (
+                  <>
+                    <Pause className="w-5 h-5 fill-current" />
+                    <span>Pause Album</span>
+                  </>
+                ) : (
+                  <>
+                    <Play className="w-5 h-5 fill-current ml-0.5" />
+                    <span>Play All</span>
+                  </>
+                )}
+              </button>
             )}
-          </button>
-          
-          <div className="hidden sm:flex flex-col min-w-0">
-            <span className="text-white font-extrabold text-sm truncate">{project.title}</span>
-            <span className="text-white/40 text-[10px] uppercase tracking-wider font-mono">Radio Waves</span>
           </div>
         </div>
-        
-        <div className="flex items-center gap-4 text-xs font-semibold font-mono text-white/40">
-          <span className="hidden md:inline">{project.tracks.length} tracks</span>
-          <span className="hidden md:inline text-white/10">•</span>
-          <span className="text-cyan-400">{formatProjectRuntime(projectRuntime, project.type)}</span>
-        </div>
-      </div>
+      </section>
 
-      {/* Tracklist List */}
-      <div className="px-4 md:px-8 py-6 max-w-5xl mx-auto w-full">
-        {/* Table Head */}
-        <div className="grid grid-cols-[40px_1fr_60px] md:grid-cols-[48px_1fr_80px] gap-4 px-4 py-3 border-b border-white/5 text-[10px] uppercase tracking-[0.2em] text-white/30 mb-2 font-bold font-mono">
-          <div className="text-center">#</div>
-          <div>Title</div>
-          <div className="text-right flex items-center justify-end"><Clock className="w-4 h-4 mr-1 shrink-0" /> TIME</div>
+      {/* Tracklist Table */}
+      <section className="px-6 md:px-12 py-10 max-w-7xl mx-auto">
+        <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/[0.06] text-xs font-mono uppercase tracking-wider text-slate-400">
+          <div className="flex items-center gap-4">
+            <span className="w-8 text-center">#</span>
+            <span>Title</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Clock className="w-3.5 h-3.5" />
+            <span>Time</span>
+          </div>
         </div>
 
-        {/* Tracks Grid Loop */}
-        <div className="space-y-1">
-          {visibleTracks.map((track, i) => {
-            const isThisTrackActive = currentTrack?.id === track.id;
-            const isThisTrackPlaying = isThisTrackActive && isPlaying;
-            const itemDuration = durations[track.id] || 0;
+        <div className="space-y-1.5">
+          {project.tracks.map((track, index) => {
+            const isThisTrack = currentTrack?.id === track.id;
+            const isThisPlaying = isThisTrack && isPlaying;
+            const trackSec = track.duration || durations[track.id] || 0;
+            const trackFormatted = formatTrackDuration(trackSec);
 
             return (
-              <div 
+              <div
                 key={track.id}
                 onClick={() => handleTrackSelect(track)}
-                className={`group grid grid-cols-[40px_1fr_60px] md:grid-cols-[48px_1fr_80px] gap-4 px-4 py-3.5 rounded-xl cursor-pointer items-center transition-all duration-300 select-none border-l-2 ${
-                  isThisTrackActive 
-                    ? 'bg-white/[0.08] text-cyan-450 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.04)] pl-3.5' 
-                    : 'hover:bg-white/[0.04] text-white/85 border-transparent active:bg-white/[0.02]'
+                className={`group flex items-center justify-between p-3.5 rounded-xl transition-all duration-150 cursor-pointer ${
+                  isThisTrack
+                    ? 'bg-cyan-500/10 border border-cyan-500/20 text-cyan-300'
+                    : 'hover:bg-white/[0.04] text-slate-300 hover:text-white border border-transparent'
                 }`}
-                id={`track-row-${track.id}`}
               >
-                {/* Track Index/Action Selector */}
-                <div className="flex items-center justify-center w-full min-h-[24px]">
-                  {/* Active playing indicator wave */}
-                  {isThisTrackPlaying ? (
-                    <div className="flex gap-0.5 items-end h-3 w-4 justify-center group-hover:hidden">
-                      <span className="w-0.5 bg-cyan-400 animate-[bounce_0.6s_infinite] h-2" style={{ animationDelay: '0.1s' }} />
-                      <span className="w-0.5 bg-cyan-400 animate-[bounce_0.6s_infinite] h-3.5" style={{ animationDelay: '0.3s' }} />
-                      <span className="w-0.5 bg-cyan-400 animate-[bounce_0.6s_infinite] h-1.5" style={{ animationDelay: '0.5s' }} />
-                    </div>
-                  ) : isThisTrackActive ? (
-                    <Volume2 className="w-4 h-4 text-cyan-400 group-hover:hidden shrink-0" />
-                  ) : (
-                    <span className="text-xs font-mono font-medium text-white/20 group-hover:hidden">
-                      {String(track.trackNumber).padStart(2, '0')}
-                    </span>
-                  )}
-
-                  {/* Explicit custom control buttons on Hover */}
-                  <div className="hidden group-hover:flex items-center justify-center shrink-0">
-                    {isThisTrackPlaying ? (
-                      <Pause className="w-3.5 h-3.5 fill-current text-cyan-400" id={`pause-track-${track.id}`} />
+                {/* Track Number / Play Action / Title */}
+                <div className="flex items-center gap-4 min-w-0 pr-4">
+                  {/* Number or Equalizer or Play Icon */}
+                  <div className="w-8 flex items-center justify-center shrink-0">
+                    {isThisPlaying ? (
+                      <div className="flex items-center gap-0.5">
+                        <span className="w-1 bg-cyan-400 rounded-full animate-eq-1" />
+                        <span className="w-1 bg-cyan-400 rounded-full animate-eq-2" />
+                        <span className="w-1 bg-cyan-400 rounded-full animate-eq-3" />
+                      </div>
                     ) : (
-                      <Play className="w-3.5 h-3.5 fill-current text-white ml-0.5" id={`play-track-${track.id}`} />
+                      <>
+                        <span className="text-xs font-mono text-slate-500 group-hover:hidden">
+                          {track.trackNumber || index + 1}
+                        </span>
+                        <Play className="w-4 h-4 fill-current text-white hidden group-hover:block" />
+                      </>
                     )}
+                  </div>
+
+                  {/* Title & Artist */}
+                  <div className="flex flex-col min-w-0">
+                    <span className={`text-sm font-bold tracking-tight truncate ${
+                      isThisTrack ? 'text-cyan-300' : 'text-white'
+                    }`}>
+                      {track.title}
+                    </span>
+                    <span className="text-xs text-slate-500 font-medium truncate">
+                      Radio Waves
+                    </span>
                   </div>
                 </div>
 
-                {/* Track title and descriptive meta details */}
-                <div className="min-w-0 pr-2">
-                  <p className={`font-bold text-sm truncate leading-snug transition-colors ${isThisTrackActive ? 'text-cyan-300 font-black' : 'text-white'}`}>
-                    {track.title}
-                  </p>
-                  <p className="text-[10px] text-white/35 font-mono truncate uppercase tracking-widest mt-0.5">Radio Waves</p>
-                </div>
+                {/* Individual Play Button & Duration */}
+                <div className="flex items-center gap-4 shrink-0 font-mono text-xs text-slate-400 tabular-nums">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleTrackSelect(track);
+                    }}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                      isThisPlaying
+                        ? 'bg-cyan-400 text-black shadow-md'
+                        : 'opacity-0 group-hover:opacity-100 hover:bg-white hover:text-black text-white'
+                    }`}
+                    title={isThisPlaying ? 'Pause' : 'Play track'}
+                  >
+                    {isThisPlaying ? (
+                      <Pause className="w-3.5 h-3.5 fill-current" />
+                    ) : (
+                      <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                    )}
+                  </button>
 
-                {/* Duration text */}
-                <div className={`text-right text-xs font-mono font-bold tracking-tight ${isThisTrackActive ? 'text-cyan-300' : 'text-white/30'}`}>
-                  {formatTrackDuration(itemDuration)}
+                  <span className={isThisTrack ? 'text-cyan-400 font-bold' : ''}>
+                    {trackFormatted}
+                  </span>
                 </div>
               </div>
             );
           })}
         </div>
-
-        {/* Sentinel to lazy-load more tracks dynamically on scroll */}
-        {project.tracks.length > visibleCount && (
-          <div id="tracklist-sentinel" className="h-10 flex items-center justify-center text-white/20 text-[10px] uppercase tracking-widest font-mono py-4">
-            Loading tracks...
-          </div>
-        )}
-      </div>
-    </motion.div>
+      </section>
+    </div>
   );
 }

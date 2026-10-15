@@ -11,61 +11,71 @@
           "id": "t_terminal_departure",
           "title": "terminal departure",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/terminal%20departure.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 331
         },
         {
           "id": "t_passing_headlights",
           "title": "passing headlights",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/passing%20headlights.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 310
         },
         {
           "id": "t_rhythmic_clatter",
           "title": "rhythmic clatter",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/rhythmic%20clatter.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 270
         },
         {
           "id": "t_window_seat",
           "title": "window seat",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/window%20seat.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 316
         },
         {
           "id": "t_distant_crossing",
           "title": "distant crossing",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/distant%20crossing.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 251
         },
         {
           "id": "t_engine_hum",
           "title": "engine hum",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/engine%20hum.mp3",
-          "trackNumber": 6
+          "trackNumber": 6,
+          "duration": 308
         },
         {
           "id": "t_3am_rest_stop",
           "title": "3am rest stop",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/3am%20rest%20stop.mp3",
-          "trackNumber": 7
+          "trackNumber": 7,
+          "duration": 276
         },
         {
           "id": "t_tunnel_vision",
           "title": "tunnel vision",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/tunnel%20vision.mp3",
-          "trackNumber": 8
+          "trackNumber": 8,
+          "duration": 289
         },
         {
           "id": "t_empty_carriage",
           "title": "empty carriage",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/empty%20carriage.mp3",
-          "trackNumber": 9
+          "trackNumber": 9,
+          "duration": 307
         },
         {
           "id": "t_final_destination",
           "title": "final destination",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7a403f134e026364f9bf9737130a4e0b957be0df/window%20seat/final%20destination.mp3",
-          "trackNumber": 10
+          "trackNumber": 10,
+          "duration": 322
         }
       ]
     },
@@ -79,7 +89,8 @@
           "id": "t_snowfall",
           "title": "snowfall",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/b29568e942ec77a48593af525fc5da66924dde47/Snowfall/snowfall.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 275
         }
       ]
     },
@@ -93,7 +104,8 @@
           "id": "t_routine",
           "title": "Routine",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/2bf684d9374c56d0849361efdf2d558b26e5b94e/Routine/Routine.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 386
         }
       ]
     },
@@ -107,43 +119,50 @@
           "id": "t_silk_sheets",
           "title": "silk sheets",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/1.%20silk%20sheets.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 329
         },
         {
           "id": "t_eye_contact",
           "title": "eye contact",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/2.%20eye%20contact.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 207
         },
         {
           "id": "t_slow_touch",
           "title": "slow touch",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/3.%20slow%20touch.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 311
         },
         {
           "id": "t_shadows_on_the_wall",
           "title": "shadows on the wall",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/4.%20shadows%20on%20the%20wall.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 174
         },
         {
           "id": "t_breathe",
           "title": "breathe",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/5.%20breathe.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 261
         },
         {
           "id": "t_skin_to_skin",
           "title": "skin to skin",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/6.%20skin%20to%20skin.mp3",
-          "trackNumber": 6
+          "trackNumber": 6,
+          "duration": 321
         },
         {
           "id": "t_morning",
           "title": "Morning",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/9d71075e0cc4bfc15657fe376f00f0e7948eb09a/sexy%20velvet%20hours/7.%20Morning.mp3",
-          "trackNumber": 7
+          "trackNumber": 7,
+          "duration": 182
         }
       ]
     },
@@ -157,7 +176,8 @@
           "id": "t_blue_horizon",
           "title": "blue horizon",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/997f829249639cbb1520ee02bbb36e18f493aa55/blue%20horizon/blue%20horizon.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 195
         }
       ]
     },
@@ -171,7 +191,8 @@
           "id": "t_blue_skies_ahead",
           "title": "blue skies ahead",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c44d31060b59de9a80ef7d24e6969429d6e930b4/Blue%20Skies%20Ahead/blue%20skies%20ahead.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 289
         }
       ]
     },
@@ -185,31 +206,36 @@
           "id": "t_packing_boxes",
           "title": "packing boxes",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c20d4db803a54da6540bcd805c78ad3a1a98f5ee/rearview%20ep/packing%20boxes.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 263
         },
         {
           "id": "t_rearview",
           "title": "rearview",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c20d4db803a54da6540bcd805c78ad3a1a98f5ee/rearview%20ep/rearview.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 337
         },
         {
           "id": "t_untied",
           "title": "untied",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c20d4db803a54da6540bcd805c78ad3a1a98f5ee/rearview%20ep/untied.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 265
         },
         {
           "id": "t_miles_away",
           "title": "miles away",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c20d4db803a54da6540bcd805c78ad3a1a98f5ee/rearview%20ep/miles%20away.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 349
         },
         {
           "id": "t_new_area_code",
           "title": "new area code",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c20d4db803a54da6540bcd805c78ad3a1a98f5ee/rearview%20ep/new%20area%20code.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 282
         }
       ]
     },
@@ -223,7 +249,8 @@
           "id": "t_crt_glow_1",
           "title": "CRT Glow",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/8338854fe15a73463273b59f0d4b8d8158f6403c/CRT%20Glow/CRT%20Glow.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 503
         }
       ]
     },
@@ -237,7 +264,8 @@
           "id": "t_static_rain_1",
           "title": "Static Rain",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a550b6e53743e985b1a0490b2285728029e7c203/static%20rain/static%20rain.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 340
         }
       ]
     },
@@ -251,31 +279,36 @@
           "id": "t_back_to_where_we_started",
           "title": "back to where we started",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/adcbfd17e84281daa35ac028539687d99e898a52/relapsed/back%20to%20where%20we%20started.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 280
         },
         {
           "id": "t_completely_defeated",
           "title": "completely defeated",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/adcbfd17e84281daa35ac028539687d99e898a52/relapsed/completely%20defeated.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 306
         },
         {
           "id": "t_failed_again",
           "title": "failed again",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/adcbfd17e84281daa35ac028539687d99e898a52/relapsed/failed%20again.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 283
         },
         {
           "id": "t_broken_cycle",
           "title": "broken cycle",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/adcbfd17e84281daa35ac028539687d99e898a52/relapsed/broken%20cycle.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 253
         },
         {
           "id": "t_relapsed",
           "title": "relapsed",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/adcbfd17e84281daa35ac028539687d99e898a52/relapsed/relapsed.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 293
         }
       ]
     },
@@ -289,31 +322,36 @@
           "id": "t_too_hot_to_go_outside",
           "title": "too hot to go outside",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/504cb1c3133aeaab4216d81028e2ffd06690fd5d/Summer Beats Ep/1. too hot to go outside.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 338
         },
         {
           "id": "t_finding_a_quote_for_tomorrow",
           "title": "finding a quote for tomorrow",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/504cb1c3133aeaab4216d81028e2ffd06690fd5d/Summer Beats Ep/2. finding a quote for tomorrow.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 456
         },
         {
           "id": "t_math_homework",
           "title": "math homework",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/504cb1c3133aeaab4216d81028e2ffd06690fd5d/Summer Beats Ep/3. math homework.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 279
         },
         {
           "id": "t_my_favourite_cousin",
           "title": "my favourite cousin",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/504cb1c3133aeaab4216d81028e2ffd06690fd5d/Summer Beats Ep/4. my favourite cousin.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 296
         },
         {
           "id": "t_the_floor_is_cold",
           "title": "the floor is cold",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/504cb1c3133aeaab4216d81028e2ffd06690fd5d/Summer Beats Ep/5. the floor is cold.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 296
         }
       ]
     },
@@ -327,49 +365,57 @@
           "id": "t_aa_event_horizon",
           "title": "event horizon",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/event horizon.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 452
         },
         {
           "id": "t_aa_snowblind",
           "title": "snowblind",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/Snowblind.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 502
         },
         {
           "id": "t_aa_sleepless_skies",
           "title": "sleepless skies",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/Sleepless Skies.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 532
         },
         {
           "id": "t_aa_vhs_winter",
           "title": "VHS winter",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/VHS Winter.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 303
         },
         {
           "id": "t_aa_tectonic_shift",
           "title": "tectonic shift",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/tectonic shift.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 532
         },
         {
           "id": "t_aa_hollow_lights",
           "title": "hollow lights",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/Hollow Lights.mp3",
-          "trackNumber": 6
+          "trackNumber": 6,
+          "duration": 274
         },
         {
           "id": "t_aa_after_the_credits",
           "title": "after the credits",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/After the Credits.mp3",
-          "trackNumber": 7
+          "trackNumber": 7,
+          "duration": 270
         },
         {
           "id": "t_aa_subzero_dreams",
           "title": "subzero dreams",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/90367033eb416a1ef6de2ceac61debfd6c4e357e/absolute ambient/Subzero Dreams.mp3",
-          "trackNumber": 8
+          "trackNumber": 8,
+          "duration": 344
         }
       ]
     },
@@ -383,151 +429,176 @@
           "id": "t_analog_bleed",
           "title": "analog bleed",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/analog%20bleed.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 344
         },
         {
           "id": "t_slow_drift",
           "title": "slow drift",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/slow%20drift.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 443
         },
         {
           "id": "t_tape_saturation",
           "title": "tape saturation",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/tape%20saturation.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 457
         },
         {
           "id": "t_eject",
           "title": "eject",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/eject.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 145
         },
         {
           "id": "t_unquantized",
           "title": "unquantized",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/unquantized.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 225
         },
         {
           "id": "t_forgotten_keys",
           "title": "forgotten keys",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/forgotten%20keys.mp3",
-          "trackNumber": 6
+          "trackNumber": 6,
+          "duration": 162
         },
         {
           "id": "t_window_rain",
           "title": "window rain",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/window%20rain.mp3",
-          "trackNumber": 7
+          "trackNumber": 7,
+          "duration": 286
         },
         {
           "id": "t_vhs_tracking",
           "title": "vhs tracking",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/vhs%20tracking.mp3",
-          "trackNumber": 8
+          "trackNumber": 8,
+          "duration": 336
         },
         {
           "id": "t_missed_call",
           "title": "missed call",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/missed%20call.mp3",
-          "trackNumber": 9
+          "trackNumber": 9,
+          "duration": 356
         },
         {
           "id": "t_hypnotic_sway",
           "title": "hypnotic sway",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/hypnotic%20sway.mp3",
-          "trackNumber": 10
+          "trackNumber": 10,
+          "duration": 235
         },
         {
           "id": "t_warped_memory",
           "title": "warped memory",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/warped%20memory.mp3",
-          "trackNumber": 11
+          "trackNumber": 11,
+          "duration": 259
         },
         {
           "id": "t_breathing_room",
           "title": "breathing room",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/breathing%20room.mp3",
-          "trackNumber": 12
+          "trackNumber": 12,
+          "duration": 314
         },
         {
           "id": "t_midnight_jazz",
           "title": "midnight jazz",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/midnight%20jazz.mp3",
-          "trackNumber": 13
+          "trackNumber": 13,
+          "duration": 164
         },
         {
           "id": "t_city_traffic",
           "title": "city traffic",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/city%20traffic.mp3",
-          "trackNumber": 14
+          "trackNumber": 14,
+          "duration": 252
         },
         {
           "id": "t_degraded_loop",
           "title": "degraded loop",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/degraded%20loop.mp3",
-          "trackNumber": 15
+          "trackNumber": 15,
+          "duration": 232
         },
         {
           "id": "t_bitcrush",
           "title": "bitcrush",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/bitcrush.mp3",
-          "trackNumber": 16
+          "trackNumber": 16,
+          "duration": 293
         },
         {
           "id": "t_offline_mode",
           "title": "offline mode",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/offline%20mode.mp3",
-          "trackNumber": 17
+          "trackNumber": 17,
+          "duration": 265
         },
         {
           "id": "t_vintage_warmth",
           "title": "vintage warmth",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/vintage%20warmth.mp3",
-          "trackNumber": 18
+          "trackNumber": 18,
+          "duration": 308
         },
         {
           "id": "t_static_void",
           "title": "static void",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/static%20void.mp3",
-          "trackNumber": 19
+          "trackNumber": 19,
+          "duration": 247
         },
         {
           "id": "t_room_foley",
           "title": "room foley",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/room%20foley.mp3",
-          "trackNumber": 20
+          "trackNumber": 20,
+          "duration": 330
         },
         {
           "id": "t_screen_glow",
           "title": "screen glow",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/screen%20glow.mp3",
-          "trackNumber": 21
+          "trackNumber": 21,
+          "duration": 289
         },
         {
           "id": "t_embers",
           "title": "embers",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/embers.mp3",
-          "trackNumber": 22
+          "trackNumber": 22,
+          "duration": 310
         },
         {
           "id": "t_pitch_drift",
           "title": "pitch drift",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/pitch%20drift.mp3",
-          "trackNumber": 23
+          "trackNumber": 23,
+          "duration": 339
         },
         {
           "id": "t_lost_signal",
           "title": "lost signal",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/lost%20signal.mp3",
-          "trackNumber": 24
+          "trackNumber": 24,
+          "duration": 321
         },
         {
           "id": "t_power_cycle",
           "title": "power cycle",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0bac1d7ada875fea45575e8b6f48f9cb8360fb46/liminal%20spaces/power%20cycle.mp3",
-          "trackNumber": 25
+          "trackNumber": 25,
+          "duration": 463
         }
       ]
     },
@@ -541,31 +612,36 @@
           "id": "t_new_world",
           "title": "new world",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1023378c311a8c2252bf8dae736e8d976590b95f/loading%20terrain/1.%20new%20world.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 174
         },
         {
           "id": "t_night_cycle",
           "title": "night cycle",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1023378c311a8c2252bf8dae736e8d976590b95f/loading%20terrain/2.%20night%20cycle.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 229
         },
         {
           "id": "t_safe_inside",
           "title": "safe inside",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1023378c311a8c2252bf8dae736e8d976590b95f/loading%20terrain/3.%20safe%20inside.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 261
         },
         {
           "id": "t_deep_underground",
           "title": "deep underground",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1023378c311a8c2252bf8dae736e8d976590b95f/loading%20terrain/4.%20deep%20underground.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 340
         },
         {
           "id": "t_night_sky",
           "title": "night sky",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1023378c311a8c2252bf8dae736e8d976590b95f/loading%20terrain/5.%20night%20sky.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 196
         }
       ]
     },
@@ -579,31 +655,36 @@
           "id": "t_crystalline_silence",
           "title": "Crystalline Silence",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/afe895fcec1b143d0d4bd705eae9d19dd65073a5/Interstellar/Crystalline%20Silence.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 339
         },
         {
           "id": "t_event_horizon",
           "title": "Event Horizon",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/afe895fcec1b143d0d4bd705eae9d19dd65073a5/Interstellar/Event%20Horizon.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 312
         },
         {
           "id": "t_interstellar_drift",
           "title": "Interstellar Drift",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/afe895fcec1b143d0d4bd705eae9d19dd65073a5/Interstellar/Interstellar%20Drift.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 343
         },
         {
           "id": "t_silent_orbit",
           "title": "Silent Orbit",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/afe895fcec1b143d0d4bd705eae9d19dd65073a5/Interstellar/Silent%20Orbit.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 262
         },
         {
           "id": "t_stellar_birth",
           "title": "Stellar Birth",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/afe895fcec1b143d0d4bd705eae9d19dd65073a5/Interstellar/Stellar%20Birth.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 351
         }
       ]
     },
@@ -617,7 +698,8 @@
           "id": "t_late_afternoon_1",
           "title": "Late Afternoon",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1d50e03d80549e37db53c459baed48b865ac0f0a/late%20afternoon/Late%20Afternoon.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 281
         }
       ]
     },
@@ -631,7 +713,8 @@
           "id": "t_lost_in_malibu_1",
           "title": "Lost in Malibu",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/1d50e03d80549e37db53c459baed48b865ac0f0a/Lost%20in%20Malibu/Lost%20in%20Malibu.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 230
         }
       ]
     },
@@ -645,7 +728,8 @@
           "id": "t_midnight_shift_1",
           "title": "Midnight Shift",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/c86c6f4ac65883878c961206b72591060dacad87/midnight%20shift/Midnight%20Shift.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 340
         }
       ]
     },
@@ -659,79 +743,92 @@
           "id": "t_numb_to_it",
           "title": "numb to it",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/1.%20numb%20to%20it.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 220
         },
         {
           "id": "t_pretending_im_fine",
           "title": "pretending i'm fine",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/2.%20pretending%20i'm%20fine.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 329
         },
         {
           "id": "t_slipping_away",
           "title": "slipping away",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/3.%20slipping%20away.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 178
         },
         {
           "id": "t_i_dont_wanna_wake_up",
           "title": "i don't wanna wake up",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/4.%20i%20don't%20wanna%20wake%20up.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 323
         },
         {
           "id": "t_breaking_down",
           "title": "breaking down",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/5.%20breaking%20down.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 318
         },
         {
           "id": "t_not_fine",
           "title": "Not Fine",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/6.%20pretending%20i'm%20fine.mp3",
-          "trackNumber": 6
+          "trackNumber": 6,
+          "duration": 253
         },
         {
           "id": "t_hope",
           "title": "Hope",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/7.%20slipping%20away.mp3",
-          "trackNumber": 7
+          "trackNumber": 7,
+          "duration": 226
         },
         {
           "id": "t_i_wish_i_forgot",
           "title": "i wish i forgot",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/8.%20i%20wish%20i%20forgot.mp3",
-          "trackNumber": 8
+          "trackNumber": 8,
+          "duration": 157
         },
         {
           "id": "t_just_a_ghost",
           "title": "just a ghost",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/9.%20just%20a%20ghost.mp3",
-          "trackNumber": 9
+          "trackNumber": 9,
+          "duration": 271
         },
         {
           "id": "t_make_it_stop",
           "title": "make it stop",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/10.%20make%20it%20stop.mp3",
-          "trackNumber": 10
+          "trackNumber": 10,
+          "duration": 298
         },
         {
           "id": "t_broken_strings",
           "title": "broken strings",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/11.%20broken%20strings.mp3",
-          "trackNumber": 11
+          "trackNumber": 11,
+          "duration": 304
         },
         {
           "id": "t_lost_dream",
           "title": "lost dream",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/12.%20lost%20dream.mp3",
-          "trackNumber": 12
+          "trackNumber": 12,
+          "duration": 221
         },
         {
           "id": "t_goodbye_forever_outro",
           "title": "Goodbye Forever (Outro)",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/0b09ab1d86fec0de81b8ed11aaf24d2251e122ae/sad%20tunes%20for%20the%20moment%20pt.2/13.%20Goodbye%20Forever%20(Outro).mp3",
-          "trackNumber": 13
+          "trackNumber": 13,
+          "duration": 341
         }
       ]
     },
@@ -745,7 +842,8 @@
           "id": "t_vhs_sunset_1",
           "title": "VHS Sunset",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/9ac3a76d890015dcf476d431e29eefb0355a1b0f/VHS%20Sunset/VHS%20Sunset.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 332
         }
       ]
     },
@@ -759,7 +857,8 @@
           "id": "t_coastline_1",
           "title": "Coastline",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/9ac3a76d890015dcf476d431e29eefb0355a1b0f/coastline/Coastline.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 340
         }
       ]
     },
@@ -773,67 +872,78 @@
           "id": "t_last_light_fading_intro",
           "title": "Last Light Fading (Intro)",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/1.%20Last%20Light%20Fading%20(Intro).mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 292
         },
         {
           "id": "t_nothing_feels_the_same",
           "title": "nothing feels the same",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/2.%20nothing%20feels%20the%20same.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 198
         },
         {
           "id": "t_cold_room",
           "title": "cold room",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/3.%20cold%20room.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 213
         },
         {
           "id": "t_i_think_im_losing_it",
           "title": "i think i'm losing it",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/4.%20i%20think%20i'm%20losing%20it.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 243
         },
         {
           "id": "t_please_dont_text_back",
           "title": "please don't text back",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/5.%20%20please%20don't%20text%20back.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 147
         },
         {
           "id": "t_staring_at_the_wall",
           "title": "staring at the wall",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/6.%20staring%20at%20the%20wall.mp3",
-          "trackNumber": 6
+          "trackNumber": 6,
+          "duration": 185
         },
         {
           "id": "t_headphones_on_full_volume",
           "title": "headphones on full volume",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/7.%20headphones%20on%20full%20volume.mp3",
-          "trackNumber": 7
+          "trackNumber": 7,
+          "duration": 283
         },
         {
           "id": "t_lost_track_of_time",
           "title": "lost track of time",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/8.%20lost%20track%20of%20time.mp3",
-          "trackNumber": 8
+          "trackNumber": 8,
+          "duration": 321
         },
         {
           "id": "t_rain_on_the_roof",
           "title": "rain on the roof",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/9.%20rain%20on%20the%20roof.mp3",
-          "trackNumber": 9
+          "trackNumber": 9,
+          "duration": 198
         },
         {
           "id": "t_it_is_what_it_is",
           "title": "it is what it is",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/10.%20it%20is%20what%20it%20is.mp3",
-          "trackNumber": 10
+          "trackNumber": 10,
+          "duration": 189
         },
         {
           "id": "t_fading_out_outro",
           "title": "fading out... (Outro)",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/4b5608965f06f31d7d11ba88d1aa4fc062a8934f/sad%20tunes%20for%20the%20moment%20pt.%201/11.%20fading%20out...%20(Outro).mp3",
-          "trackNumber": 11
+          "trackNumber": 11,
+          "duration": 354
         }
       ]
     },
@@ -847,73 +957,85 @@
           "id": "t_blowing_dust",
           "title": "Blowing Dust",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/1.%20Blowing%20Dust.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 291
         },
         {
           "id": "t_loud_fan",
           "title": "Loud Fan",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/2.%20Loud%20Fan.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 582
         },
         {
           "id": "t_loading_screen",
           "title": "Loading Screen",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/3.%20Loading%20Screen.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 645
         },
         {
           "id": "t_old_screenshots",
           "title": "Old Screenshots",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/4.%20Old%20Screenshots.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 679
         },
         {
           "id": "t_we_built_this",
           "title": "We Built This a Long Time Ago",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/5.%20we%20built%20this%20a%20long%20time%20ago.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 558
         },
         {
           "id": "t_no_friends_online",
           "title": "No Friends Online",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/6.%20No%20Friends%20Online.mp3",
-          "trackNumber": 6
+          "trackNumber": 6,
+          "duration": 402
         },
         {
           "id": "t_driving_around_same_map",
           "title": "Driving Around The Same Map",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/7.%20Driving%20Around%20The%20Same%20Map.mp3",
-          "trackNumber": 7
+          "trackNumber": 7,
+          "duration": 513
         },
         {
           "id": "t_cheat_codes",
           "title": "Cheat Codes",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/8.%20Cheat%20Codes.mp3",
-          "trackNumber": 8
+          "trackNumber": 8,
+          "duration": 588
         },
         {
           "id": "t_sunset_in_game",
           "title": "Sunset In Game",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/9.%20Sunset%20In%20Game.mp3",
-          "trackNumber": 9
+          "trackNumber": 9,
+          "duration": 653
         },
         {
           "id": "t_old_save_file",
           "title": "Old Save File",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/10.%20Old%20Save%20File.mp3",
-          "trackNumber": 10
+          "trackNumber": 10,
+          "duration": 481
         },
         {
           "id": "t_battery_dying",
           "title": "Battery Dying",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/11.%20Battery%20Dying.mp3",
-          "trackNumber": 11
+          "trackNumber": 11,
+          "duration": 614
         },
         {
           "id": "t_turn_off",
           "title": "Turn Off",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/a0b216b01a8859d7f8d94c4a258017154dcb18cf/booting%20up%20the%20old%20laptop/12.%20Turn%20Off.mp3",
-          "trackNumber": 12
+          "trackNumber": 12,
+          "duration": 172
         }
       ]
     },
@@ -927,31 +1049,36 @@
           "id": "t_having_fun",
           "title": "having fun",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/15dfa9aff0a33dc6b68cd1b68ae7c618bd0ec9ae/ocean%20view%20hotel/1.%20having%20fun.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 229
         },
         {
           "id": "t_neon_lights",
           "title": "neon lights",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/15dfa9aff0a33dc6b68cd1b68ae7c618bd0ec9ae/ocean%20view%20hotel/2.%20neon%20lights.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 96
         },
         {
           "id": "t_radio_is_on",
           "title": "radio is on",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/15dfa9aff0a33dc6b68cd1b68ae7c618bd0ec9ae/ocean%20view%20hotel/3.%20radio%20is%20on.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 147
         },
         {
           "id": "t_leave_me_alone",
           "title": "leave me alone",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/15dfa9aff0a33dc6b68cd1b68ae7c618bd0ec9ae/ocean%20view%20hotel/4.%20leave%20me%20alone.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 256
         },
         {
           "id": "t_one_last_night_ride",
           "title": "one last night ride",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/15dfa9aff0a33dc6b68cd1b68ae7c618bd0ec9ae/ocean%20view%20hotel/5.%20one%20last%20night%20ride.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 146
         }
       ]
     },
@@ -965,7 +1092,8 @@
           "id": "t_between_two_frequencies_pt2_1",
           "title": "Between Two Frequencies Pt.2",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/78821acf5dc666c7d28e2953feb764c2774e6867/Between%20Two%20Frequencies%20PT.2.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 134
         }
       ]
     },
@@ -979,7 +1107,8 @@
           "id": "t_broken_promises_1",
           "title": "Broken Promises",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/d97b433d7d2e8898fdd065f5e6412663065d3938/broken%20promises/broken%20promises.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 1040
         }
       ]
     },
@@ -993,7 +1122,8 @@
           "id": "t_static_lights_1",
           "title": "Static Lights",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/9d9ff0331d46fa5a4a1c58f6b649b48a7f1f8638/Static%20Lights/Static%20Lights.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 155
         }
       ]
     },
@@ -1007,7 +1137,8 @@
           "id": "t_silk_static_1",
           "title": "Silk & Static",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/483dedb75192c053f1113caf20b34c8abfd70cc9/Silk%20%26%20Static/Silk%20%26%20Static.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 169
         }
       ]
     },
@@ -1021,31 +1152,36 @@
           "id": "t_clicking_around",
           "title": "clicking around",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/cebecb7674a6e1e098004de4d36d0cd0b339337c/loading%20fl%20studio%20again/1.%20clicking%20around.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 346
         },
         {
           "id": "t_waiting_for_plugin",
           "title": "waiting for the plugin to load",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/cebecb7674a6e1e098004de4d36d0cd0b339337c/loading%20fl%20studio%20again/2.%20waiting%20for%20the%20plugin%20to%20load.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 294
         },
         {
           "id": "t_think_sounds_good",
           "title": "i think this sounds good",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/cebecb7674a6e1e098004de4d36d0cd0b339337c/loading%20fl%20studio%20again/3.%20i%20think%20this%20sounds%20good.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 202
         },
         {
           "id": "t_scrolling_samples",
           "title": "scrolling through samples",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/cebecb7674a6e1e098004de4d36d0cd0b339337c/loading%20fl%20studio%20again/4.%20scrolling%20through%20samples.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 293
         },
         {
           "id": "t_exporting_crashed",
           "title": "exporting... crashed!",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/RadioLofi/cebecb7674a6e1e098004de4d36d0cd0b339337c/loading%20fl%20studio%20again/5.%20exporting...%20crashed!.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 211
         }
       ]
     },
@@ -1059,7 +1195,8 @@
           "id": "t_neon_city_1",
           "title": "Neon City",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/c6b040ac0fcf46a59dd25c9ab77bbb8a2b9007ff/Purple%20City.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 605
         }
       ]
     },
@@ -1073,31 +1210,36 @@
           "id": "t_caught_a_breeze",
           "title": "Caught a Breeze",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/c6b040ac0fcf46a59dd25c9ab77bbb8a2b9007ff/1.%20caught%20a%20breeze.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 308
         },
         {
           "id": "t_pink_skies",
           "title": "Pink Skies",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/c6b040ac0fcf46a59dd25c9ab77bbb8a2b9007ff/2.%20pink%20skies.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 346
         },
         {
           "id": "t_orange_gradient",
           "title": "Orange Gradient",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/c6b040ac0fcf46a59dd25c9ab77bbb8a2b9007ff/3.%20Orange%20Gradient.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 180
         },
         {
           "id": "t_afterglow",
           "title": "Afterglow",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/c6b040ac0fcf46a59dd25c9ab77bbb8a2b9007ff/4.%20Afterglow.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 359
         },
         {
           "id": "t_fade_to_dusk",
           "title": "Fade to Dusk",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/radio/c6b040ac0fcf46a59dd25c9ab77bbb8a2b9007ff/5.%20Fade%20to%20Dusk.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 194
         }
       ]
     },
@@ -1111,7 +1253,8 @@
           "id": "t_purple_skyline",
           "title": "Purple Skyline",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7f70e628bcdeafa28d6f3729aabb390961ea147a/purple%20skyline/purple%20skyline.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 331
         }
       ]
     },
@@ -1125,7 +1268,8 @@
           "id": "t_purple_skyline_neon_synth",
           "title": "Purple Skyline (Neon Synth)",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7f70e628bcdeafa28d6f3729aabb390961ea147a/purple%20skyline/purple%20skyline%20(neon%20synth).mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 321
         }
       ]
     },
@@ -1139,43 +1283,50 @@
           "id": "t_fading_intro",
           "title": "Fading Intro",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/1.%20Fading%20Intro.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 90
         },
         {
           "id": "t_after_rain",
           "title": "After Rain",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/2.%20After%20Rain.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 291
         },
         {
           "id": "t_concentrations",
           "title": "Concentrations",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/3.%20Concentrations.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 316
         },
         {
           "id": "t_aurora",
           "title": "Aurora",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/4.%20Aurora.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 380
         },
         {
           "id": "t_dawn_rise",
           "title": "Dawn Rise",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/5.%20Dawn%20Rise.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 180
         },
         {
           "id": "t_soft_spoken",
           "title": "Soft Spoken",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/6.%20Soft%20Spoken.mp3",
-          "trackNumber": 6
+          "trackNumber": 6,
+          "duration": 357
         },
         {
           "id": "t_have_a_good_one",
           "title": "Have A Good One",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/20edc8302f50994d7ccc3168d503c7678329514a/Mixed%20Frequencies%20Reimagined/7.%20Have%20A%20Good%20One.mp3",
-          "trackNumber": 7
+          "trackNumber": 7,
+          "duration": 191
         }
       ]
     },
@@ -1189,7 +1340,8 @@
           "id": "t_endless_sky",
           "title": "Endless Sky",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/7f1d24fe3fab67a8ecfd21270937f22596c7a29a/Endless%20Sky/Endless%20Sky.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 206
         }
       ]
     },
@@ -1203,31 +1355,36 @@
           "id": "t_is_it_ready_yet",
           "title": "Is it ready yet",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/3acbcb63d2be08f1360ea1713f5b89c394d5fcf8/waiting%20for%20food/1.%20Is%20it%20ready%20yet.mp3",
-          "trackNumber": 1
+          "trackNumber": 1,
+          "duration": 154
         },
         {
           "id": "t_walking_to_the_kitchen",
           "title": "walking to the kitchen",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/3acbcb63d2be08f1360ea1713f5b89c394d5fcf8/waiting%20for%20food/2.%20walking%20to%20the%20kitchen.mp3",
-          "trackNumber": 2
+          "trackNumber": 2,
+          "duration": 270
         },
         {
           "id": "t_eating_on_the_couch",
           "title": "eating on the couch",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/3acbcb63d2be08f1360ea1713f5b89c394d5fcf8/waiting%20for%20food/3.%20eating%20on%20the%20couch.mp3",
-          "trackNumber": 3
+          "trackNumber": 3,
+          "duration": 189
         },
         {
           "id": "t_spilled_a_little_bit",
           "title": "spilled a little bit",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/3acbcb63d2be08f1360ea1713f5b89c394d5fcf8/waiting%20for%20food/4.%20spilled%20a%20little%20bit.mp3",
-          "trackNumber": 4
+          "trackNumber": 4,
+          "duration": 270
         },
         {
           "id": "t_putting_the_plate_in_the_sink",
           "title": "putting the plate in the sink",
           "driveFileId": "https://raw.githubusercontent.com/Samplayshindi/Archiveps/3acbcb63d2be08f1360ea1713f5b89c394d5fcf8/waiting%20for%20food/5.%20putting%20the%20plate%20in%20the%20sink.mp3",
-          "trackNumber": 5
+          "trackNumber": 5,
+          "duration": 329
         }
       ]
     }
